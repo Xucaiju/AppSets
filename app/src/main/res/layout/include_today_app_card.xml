@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<com.skydoves.transformationlayout.TransformationLayout
+    android:id="@+id/fragmentTodayFeaturedCardtranformationLayout"
+    app:transformation_duration="450"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/fragmentTodayFeatureCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp"
+        app:rippleColor="@color/colorTransparent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/fragmentTodayAppIconView"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="16dp"
+
+                android:layout_marginTop="@dimen/margin_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@mipmap/ic_launcher_round" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fragmentTodayAppDisplayName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:textAppearance="@style/AppSets.TextAppearance.Title"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/fragmentTodayAppIconView"
+                app:layout_constraintStart_toEndOf="@+id/fragmentTodayAppIconView"
+                app:layout_constraintTop_toTopOf="@+id/fragmentTodayAppIconView"
+                tools:text="Retro Music" />
+
+            <HorizontalScrollView
+
+                android:id="@+id/horizontal_chip_group"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentTodayAppIconView"
+                tools:background="@color/colorGoogleLightYellow"
+                tools:layout_height="50dp">
+    <LinearLayout
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/fragmentToday_app_type_chip_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_height="30dp"
+                tools:layout_width="120dp">
+
+            </com.google.android.material.chip.ChipGroup>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+            </HorizontalScrollView>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fragmentTodayAppFeaturesTextView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:paddingStart="@dimen/margin_normal"
+                android:paddingEnd="@dimen/margin_normal"
+                android:paddingBottom="@dimen/margin_xlarge"
+                android:textSize="14sp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontal_chip_group"
+                tools:text="\tRetro is good for you , everyone can get it free,but not just a music player , it cant do whatever you wanted." />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/fragmentToday_favorite_button"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginEnd="16dp"
+                android:textSize="12sp"
+                android:layout_marginBottom="12dp"
+                android:focusable="false"
+                app:icon="@drawable/ic_favourite_active"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentTodayAppFeaturesTextView"
+                app:rippleColor="@color/colorTransparent"
+                app:strokeColor="?android:attr/colorAccent"
+                app:strokeWidth="1.5dp"
+                tools:text="收藏"
+                android:textAllCaps="false"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</com.skydoves.transformationlayout.TransformationLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

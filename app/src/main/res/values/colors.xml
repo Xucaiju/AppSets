@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#0F9D58</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorRed">#F44336</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorScrim">#3FC741</color>
+    <color name="colorDarkAccent">#03DAC5</color>
+    <color name="colorDarkPrimaryDark">#202124</color>
+    <color name="colorScrimWhite">#27D52E</color>
+    <color name="colorDarkWindowBackground">#202124</color>
+    <color name="colorDarkBackground">#2D2E31</color>
+    <color name="colorBottomIconChecked">@color/colorRed</color>
+    <color name="colorBottomIconUnchecked">#171717</color>
+    <color name="colorYellow">#FFEB3B</color>
+    <color name="colorScrimAccent">#224768FD</color>
+    <color name="colorGreen">#4CAF50</color>
+    <color name="colorBlackAccent">#03DAC5</color>
+    <color name="colorIconColorDark">#202124</color>
+    <color name="colorIconColorLight">#FFFFFF</color>
+    <color name="colorTransparent">@android:color/transparent</color>
+    <color name="colorGray">#7E7E7E</color>
+
+    <color name="colorGoogleRed">#DB4437</color>
+    <color name="colorGoogleLigntRed">#FF7F74</color>
+    <color name="colorGoogleGreen">#0F9D58</color>
+    <color name="colorGoogleLightGreen">#56E6A0</color>
+    <color name="colorGoogleLightGreenWithAlpha">#7A6FFFB8</color>
+    <color name="colorGoogleBlue">#4285F4</color>
+    <color name="colorGoogleLightBlue">#8EB7FB</color>
+    <color name="colorGoogleYellow">#F4B400</color>
+    <color name="colorGoogleLightYellow">#FFE394</color>
+
+
+    <color name="colorTest">#212121</color>
+</resources>

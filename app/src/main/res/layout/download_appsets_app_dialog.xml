@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/comming_soon_to_install_xxx"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="即将为你安装Chrome"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/appsets_download_progress_bar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout6"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/colorGray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comming_soon_to_install_xxx" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appsets_download_app_icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/appsets_download_app_displayname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Google Chrome"
+        android:textSize="16sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/appsets_download_app_icon"
+        app:layout_constraintStart_toEndOf="@+id/appsets_download_app_icon"
+        app:layout_constraintTop_toTopOf="@+id/appsets_download_app_icon" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+
+        android:id="@+id/appsets_download_progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:progress="40"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/appsets_download_app_displayname"
+        app:layout_constraintTop_toBottomOf="@+id/appsets_download_app_icon" />
+
+    <com.google.android.material.textview.MaterialTextView
+        tools:text="33%"
+        android:id="@+id/appsets_download_progress_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/appsets_download_progress_bar"
+        app:layout_constraintTop_toBottomOf="@+id/appsets_download_progress_bar" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/appsets_download_go_background_action"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:strokeColor="?android:attr/colorAccent"
+        app:strokeWidth="1.5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="24dp"
+        android:text="go_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/appsets_download_progress_bar"
+        app:layout_constraintTop_toBottomOf="@+id/appsets_download_progress_bar" />
+</androidx.constraintlayout.widget.ConstraintLayout>

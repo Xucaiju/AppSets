@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <style name="AppSets.Widget.BottomNavigation" parent="@style/Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/color_selector</item>
+        <item name="colorAccent">@color/color_selector</item>
+        <item name="itemTextColor">@color/color_selector</item>
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
+
+    <style name="AppSets.Widget.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">?android:attr/windowBackground</item>
+        <item name="titleTextAppearance">@style/AppSets.TextAppearance.Toolbar.Title</item>
+
+    </style>
+
+    <style name="AppSets.Widget.AppBar" parent="@style/Widget.Design.AppBarLayout">
+
+        <item name="android:background">?android:attr/windowBackground</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
+</resources>

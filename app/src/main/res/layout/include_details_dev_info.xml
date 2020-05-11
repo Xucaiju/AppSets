@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/developer_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/generic_padded_bg"
+    android:orientation="vertical"
+    android:visibility="visible"
+    tools:visibility="visible"
+    android:translationY="50dp"
+    tools:translationY="0dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:text="@string/details_dev_details"
+        android:textAlignment="center"
+        android:textAppearance="@style/AppSets.TextAppearance.SubTitle"
+        android:textColor="?android:attr/textColorSecondary"/>
+
+    <RelativeLayout
+        android:id="@+id/layoutsite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/margin_xxsmall"
+        android:paddingBottom="@dimen/margin_xxsmall">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_dev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_xxsmall"
+            android:src="@drawable/ic_network"
+            android:tint="@color/colorGoogleYellow" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_dev_web_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_toEndOf="@id/img_dev"
+            android:text="@string/details_dev_website"
+            android:textAppearance="@style/AppSets.TextAppearance.Line3"
+
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_dev_web_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_dev_web_title"
+            android:layout_alignStart="@id/txt_dev_web_title"
+            android:autoLink="web"
+            android:linksClickable="true"
+            android:textAppearance="@style/AppSets.TextAppearance.Line5"
+            android:textColorLink="?android:attr/textColorSecondary" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/margin_xxsmall"
+        android:paddingBottom="@dimen/margin_xxsmall">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_dev_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_xxsmall"
+            android:src="@drawable/ic_mail"
+            android:tint="@color/colorGoogleRed" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_dev_email_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_toEndOf="@id/img_dev_email"
+            android:text="@string/details_dev_email"
+            android:textAppearance="@style/AppSets.TextAppearance.Line3"
+
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_dev_email_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_dev_email_title"
+            android:layout_alignStart="@id/txt_dev_email_title"
+            android:autoLink="email"
+            android:linksClickable="true"
+            android:textAppearance="@style/AppSets.TextAppearance.Line5"
+            android:textColorLink="?android:attr/textColorSecondary" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_addr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/margin_xxsmall"
+        android:paddingBottom="@dimen/margin_xxsmall">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_dev_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_xxsmall"
+            android:src="@drawable/ic_map"
+            android:tint="@color/colorGoogleGreen" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_dev_addr_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_toEndOf="@id/img_dev_addr"
+            android:text="@string/details_dev_address"
+            android:textAppearance="@style/AppSets.TextAppearance.Line3"
+
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_dev_addr_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_dev_addr_title"
+            android:layout_alignStart="@id/txt_dev_addr_title"
+            android:autoLink="map"
+            android:linksClickable="true"
+            android:textAppearance="@style/AppSets.TextAppearance.Line5"
+            android:textColorLink="?android:attr/textColorSecondary"
+            android:textIsSelectable="true" />
+    </RelativeLayout>
+</LinearLayout>

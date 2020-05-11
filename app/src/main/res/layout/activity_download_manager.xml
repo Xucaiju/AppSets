@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DownloadManagerActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:paddingTop="32dp"
+        android:background="?android:attr/colorBackground"
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="168dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                app:titleMarginStart="@dimen/margin_large"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:title="下载内容"
+                app:navigationIcon="@drawable/ic_arrow_back_24px">
+
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton"
+                android:layout_width="0dp"
+                android:layout_height="84dp"
+                android:layout_margin="@dimen/margin_large"
+                app:backgroundTint="#8CFFE394"
+                android:text="dummy download item"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton3"
+                android:layout_width="0dp"
+                android:layout_height="84dp"
+                android:layout_margin="@dimen/margin_large"
+                app:backgroundTint="#8CA694FF"
+                android:text="dummy download item"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialButton" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton4"
+                android:layout_width="0dp"
+                android:layout_height="84dp"
+                android:layout_margin="@dimen/margin_large"
+                android:text="dummy download item"
+                app:backgroundTint="#8C94FFB2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialButton3" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton6"
+                android:layout_width="0dp"
+                android:layout_height="84dp"
+                android:layout_margin="@dimen/margin_large"
+                android:text="dummy download item"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialButton5" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton5"
+                android:layout_width="0dp"
+                android:layout_height="84dp"
+                android:layout_margin="@dimen/margin_large"
+                android:text="dummy download item"
+                app:backgroundTint="#8C7C735C"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialButton4" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton7"
+                android:layout_width="0dp"
+                android:layout_height="84dp"
+                android:layout_margin="@dimen/margin_large"
+                android:text="dummy download item"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialButton6" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton8"
+                android:layout_width="0dp"
+                android:layout_height="84dp"
+                android:layout_margin="@dimen/margin_large"
+                android:text="dummy download item"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialButton7" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
+                android:layout_height="84dp"
+                android:layout_margin="@dimen/margin_large"
+                android:text="dummy download item"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialButton7" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton9"
+                android:layout_width="0dp"
+                android:layout_height="84dp"
+                android:layout_margin="@dimen/margin_large"
+                android:text="dummy download item"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialButton8" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton10"
+                android:layout_width="0dp"
+                android:layout_height="84dp"
+                android:layout_margin="@dimen/margin_large"
+                android:text="dummy download item"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialButton9" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton11"
+                android:layout_width="0dp"
+                android:layout_height="84dp"
+                android:layout_margin="@dimen/margin_large"
+                android:text="dummy download item"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialButton10" />
+
+           <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButton12"
+            android:layout_width="0dp"
+            android:layout_height="84dp"
+            android:layout_margin="@dimen/margin_large"
+            android:text="dummy download item"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialButton11" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>

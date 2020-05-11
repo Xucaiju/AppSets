@@ -1,0 +1,110 @@
+<resources>
+
+    <string-array name="pref_themes">
+        <item>@string/pref_ui_theme_light</item>
+        <item>@string/pref_ui_theme_dark</item>
+        <item>@string/pref_ui_theme_black</item>
+        <item>@string/pref_ui_theme_follow_system</item>
+
+    </string-array>
+
+    <string-array name="pref_themes_values">
+        <item>light</item>
+        <item>dark</item>
+        <item>black</item>
+        <item>follow_system</item>
+    </string-array>
+
+    <string-array name="pref_locale_names">
+        <item>@string/pref_default</item>
+       <!-- <item>Arabic</item>
+        <item>Asturian</item>
+        <item>Bulgarian</item>
+        <item>Belarusian</item>
+        <item>Catalan</item>-->
+        <item>@string/chinese_simplified</item>
+        <!--<item>Chinese Traditional</item>
+        <item>Croatian</item>
+        <item>Dutch</item>-->
+        <item>@string/english</item>
+       <!-- <item>Estonian</item>-->
+        <item>@string/french</item>
+       <!-- <item>Galician</item>-->
+        <item>@string/german</item>
+       <!-- <item>Greek</item>
+        <item>Hebrew</item>
+        <item>Hindi</item>
+        <item>Hungarian</item>
+        <item>Indonasian</item>
+        <item>Italian</item>-->
+        <item>@string/japanese</item>
+        <item>@string/korean</item>
+        <!--<item>Lithuanian</item>
+        <item>Norwegian Bokmål</item>
+        <item>Polish</item>
+        <item>Portuguese</item>
+        <item>Portuguese(BR)</item>
+        <item>Punjabi</item>
+        <item>Romanian</item>
+        <item>Russian</item>
+        <item>Sardinian</item>
+        <item>Serbian</item>
+        <item>Slovak</item>
+        <item>Spanish</item>
+        <item>Swedish</item>
+        <item>Thai</item>
+        <item>Turkish</item>
+        <item>Ukrainian</item>
+        <item>Vietnamese</item>
+        <item>Welsh</item>
+        <item>Koffrora (Meme)</item>-->
+        <item>@string/appsets</item>
+    </string-array>
+    <string-array name="pref_locale_values">
+        <item> </item>
+<!--        <item>ar-SA</item>
+        <item>b-ast</item>
+        <item>bg-BG</item>
+        <item>be-BY</item>
+        <item>ca-ES</item>-->
+        <item>zh-CN</item>
+<!--        <item>zh-TW</item>
+        <item>hr-HR</item>
+        <item>nl-NL</item>-->
+        <item>en-US</item>
+<!--        <item>et-EE</item>-->
+        <item>fr-FR</item>
+ <!--       <item>gl-ES</item>-->
+       <item>de-DE</item>
+        <!--      <item>el-GR</item>
+             <item>iw-IL</item>
+             <item>hi-IN</item>
+             <item>hu-HU</item>
+             <item>in-ID</item>
+             <item>it-IT</item>-->
+        <item>ja-JP</item>
+        <item>ko-KR</item>
+<!--        <item>lt-LT</item>
+        <item>nb-NO</item>
+        <item>pl-PL</item>
+        <item>pt-PT</item>
+        <item>pt-BR</item>
+        <item>pa-IN</item>
+        <item>ro-RO</item>
+        <item>ru-RU</item>
+        <item>sc-IT</item>
+        <item>sr-SR</item>
+        <item>sk-SK</item>
+        <item>es-ES</item>
+        <item>sv-SE</item>
+        <item>th-TH</item>
+        <item>tr-TR</item>
+        <item>uk-UA</item>
+        <item>vi-VN</item>
+        <item>cy-GB</item>
+        <item>bh-IN</item>-->
+        <item>zun</item>
+    </string-array>
+
+
+</resources>

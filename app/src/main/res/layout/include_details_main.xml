@@ -1,0 +1,94 @@
+<!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="@dimen/margin_normal">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/details_icon"
+        android:layout_width="@dimen/icon_size_normal"
+        android:layout_height="@dimen/icon_size_normal"
+        android:padding="@dimen/margin_xsmall"
+        android:layout_margin="@dimen/margin_normal"
+        android:src="@drawable/ic_favourite_active"
+        android:transitionName="shareElementIcon"/>
+
+    <RelativeLayout
+        android:id="@+id/app_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/details_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_toEndOf="@id/details_icon">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/detailsAppDisplayName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="none"
+            android:maxWidth="320dp"
+            android:requiresFadingEdge="horizontal"
+            android:singleLine="true"
+            android:textAppearance="@style/AppSets.TextAppearance.Title"
+            android:text="App Name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/detailsAppPackageName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailsAppDisplayName"
+            android:singleLine="true"
+            android:textAppearance="@style/AppSets.TextAppearance.Line3"
+            android:textIsSelectable="true"
+            android:text="subtitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/detailsDevName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailsAppPackageName"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textAppearance="@style/AppSets.TextAppearance.Line3"
+            android:textColor="?android:attr/colorAccent"
+            android:text="sub_subtitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/detailsVersionString"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailsDevName"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/AppSets.TextAppearance.Line3"
+            android:textSize="12sp"
+            android:text="sub_sub_subtitle" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

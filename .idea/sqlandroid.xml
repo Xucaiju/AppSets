@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SQLAndroidSettings">
+    <option name="databases">
+      <map>
+        <entry key="appsets_database_C:\Users\12248\Downloads\AppSets\AndroidSqlEditorDatabases\">
+          <value>
+            <list>
+              <option value="f3b1ce9f" />
+              <option value="/databases/appsets_database" />
+              <option value="appsets_database" />
+              <option value="appsets_database" />
+              <option value="true" />
+              <option value="xcj.appsets" />
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="storageVersion" value="2" />
+  </component>
+</project>

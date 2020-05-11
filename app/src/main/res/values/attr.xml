@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleImageView">
+        <attr format="dimension" name="civ_border_width"/>
+        <attr format="color" name="civ_border_color"/>
+        <attr format="boolean" name="civ_border_overlay"/>
+        <attr format="color" name="civ_circle_background_color"/>
+    </declare-styleable>
+    <declare-styleable name="AppSetsTimeLineRecyclerView">
+        <attr name="sectionBackgroundColor" format="color" />
+        <attr name="sectionTitleTextColor" format="color" />
+        <attr name="sectionSubTitleTextColor" format="color" />
+        <attr name="timeLineColor" format="color" />
+        <attr name="timeLineWidth" format="dimension" />
+
+        <attr name="timeLineCircleColor" format="color" />
+        <attr name="timeLineCircleStrokeColor" format="color" />
+
+        <attr name="sectionTitleTextSize" format="dimension" />
+        <attr name="sectionSubTitleTextSize" format="dimension" />
+        <attr name="isSticky" format="boolean" />
+        <attr name="customDotDrawable" format="reference" />
+        <attr name="mode" format="enum">
+            <enum name="vertical" value="0x00"/>
+            <enum name="horizontal" value="0x01"/>
+        </attr>
+    </declare-styleable>
+    <!--<color name="colorDefaultBackground">#F9F9F9</color>
+    <color name="colorDefaultCircle">#51ae45</color>
+    <color name="colorDefaultLine">?android:attr/colorAccent</color>
+    <color name="colorDefaultStroke">#F9F9F9</color>
+    <color name="colorDefaultSubTitle">?android:attr/textColorSecondary</color>
+    <color name="colorDefaultTitle">?android:attr/textColorPrimary</color>
+    <dimen name="dot_padding_right">12dp</dimen>
+    <dimen name="dot_size">20dp</dimen>
+    <dimen name="header_padding_left">12dp</dimen>
+    <dimen name="header_textview_padding">8dp</dimen>
+    <dimen name="line_width">4dp</dimen>
+    <dimen name="recycler_section_header_height">64dp</dimen>
+    <dimen name="sub_title_text_size">12sp</dimen>
+    <dimen name="title_text_size">14sp</dimen>-->
+</resources>

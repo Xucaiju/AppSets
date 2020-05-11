@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.CategoryActivity">
+
+    <io.alterac.blurkit.BlurLayout
+        android:id="@+id/activity_category_blurLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.skydoves.transformationlayout.TransformationLayout
+                android:id="@+id/transformationLayout"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:transformation_duration="450">
+
+                <include
+                    android:id="@+id/include"
+                    layout="@layout/search_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_search_view"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:layout_marginBottom="@dimen/margin_normal" />
+
+            </com.skydoves.transformationlayout.TransformationLayout>
+
+            <com.google.android.material.chip.ChipGroup
+
+                android:id="@+id/category_choice_chip_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/transformationLayout">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/category_top_free_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="热门免费" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/category_fastest_rise_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="上升最快" />
+
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/category_highest_revenue_generation_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="创收最高" />
+            </com.google.android.material.chip.ChipGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </io.alterac.blurkit.BlurLayout>
+
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:paddingTop="132dp"
+        android:id="@+id/category_viewpaper"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:overScrollMode="never"
+        android:translationZ="-1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_category_blurLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

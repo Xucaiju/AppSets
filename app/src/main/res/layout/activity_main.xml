@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity"
+    android:background="?android:attr/colorBackground">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <fragment
+                android:id="@+id/main_nav_host"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:defaultNavHost="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navGraph="@navigation/nav_main" />
+
+
+            <com.skydoves.transformationlayout.TransformationLayout
+                android:id="@+id/transformationLayout"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="@dimen/margin_large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:transformation_duration="450">
+
+                <include
+                    android:id="@+id/include"
+                    layout="@layout/search_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_search_view"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    android:layout_marginBottom="@dimen/margin_normal"/>
+
+            </com.skydoves.transformationlayout.TransformationLayout>
+
+
+            <FrameLayout
+                android:id="@+id/when_fab_clicked_show_framelayout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0"
+                tools:alpha="1"
+                android:background="#C0FFFFFF"
+                android:visibility="gone"
+                tools:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/download_mini_fab_action"
+                android:elevation="2dp"
+                android:translationY="64dp"
+                tools:translationY="0dp"
+                android:alpha="0"
+                tools:alpha="1"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:scaleX="0.3"
+                android:scaleY="0.3"
+                tools:scaleY="1"
+                tools:scaleX="1"
+                app:backgroundTint="?android:attr/colorBackground"
+                android:src="@drawable/ic_download_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:fabSize="mini"
+                app:layout_constraintBottom_toTopOf="@+id/open_category_action"
+                app:layout_constraintEnd_toEndOf="@+id/open_category_action"
+                app:layout_constraintStart_toStartOf="@+id/open_category_action" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/open_category_action"
+                android:padding="@dimen/margin_normal"
+                android:elevation="2dp"
+                android:background="@drawable/circle_bg_light"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:layout_marginBottom="86dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_category_black_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/download_mini_fab_action_hint_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_xlarge"
+                android:alpha="0"
+                android:text="下载内容"
+                android:translationY="24dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/open_category_action"
+                app:layout_constraintEnd_toEndOf="@+id/open_category_action_hint_text"
+                tools:alpha="1"
+                tools:scaleX="1"
+                tools:scaleY="1"
+                tools:translationY="0dp"
+                tools:visibility="visible" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/open_category_action_hint_text"
+                android:alpha="0"
+                tools:alpha="1f"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:text="分类"
+                app:layout_constraintBottom_toBottomOf="@+id/open_category_action"
+                app:layout_constraintEnd_toStartOf="@+id/open_category_action"
+                app:layout_constraintTop_toTopOf="@+id/open_category_action" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        style="@style/AppSets.Widget.BottomNavigation"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        app:itemRippleColor="@color/colorTransparent"
+        app:itemTextAppearanceActive="@style/AppSets.TextAppearance.BottomNav.Active"
+        app:itemTextAppearanceInactive="@style/AppSets.TextAppearance.BottomNav.Inactive"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/navigation_bottom_menu" />
+    <!--app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"-->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

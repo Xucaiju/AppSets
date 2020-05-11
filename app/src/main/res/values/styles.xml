@@ -1,0 +1,66 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorAccent">@color/colorGoogleBlue</item>
+        <item name="colorPrimary">@color/colorGoogleBlue</item>
+    </style>
+
+
+    <style name="AppTheme.Dark" parent="ThemeOverlay.MaterialComponents.Dark">
+        <item name="android:colorBackground">@color/colorTest</item>
+        <item name="colorAccent">@color/colorGoogleLightBlue</item>
+        <item name="colorPrimary">@color/colorGoogleLightBlue</item>
+    </style>
+
+
+    <style name="AppTheme.Black" parent="AppTheme.Dark">
+        <item name="android:colorBackground">@color/colorBlack</item>
+    </style>
+
+
+<style name="AppTheme.LaunchScreenTheme" >
+    <item name="android:statusBarColor">?android:attr/colorBackground</item>
+    <item name="android:windowBackground">@drawable/launch_screen</item>
+</style>
+    <style name="AppTheme.Dark.LaunchScreenTheme" >
+        <item name="android:statusBarColor">?android:attr/colorBackground</item>
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+    </style>
+
+    <style name="AppTheme.Black.LaunchScreenTheme" >
+        <item name="android:statusBarColor">?android:attr/colorBackground</item>
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+    </style>
+
+
+    <style name="ScrollItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+    </style>
+    <style name="ScrollItem.A">
+        <item name="android:background">?attr/colorControlHighlight</item>
+    </style>
+    <style name="ScrollItem.B">
+        <item name="android:background">?attr/colorAccent</item>
+    </style>
+
+    <style name="FullScreenDialogStyle" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@color/colorTransparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+
+
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottomsheet_round</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
+</resources>

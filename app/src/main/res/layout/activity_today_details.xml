@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/windows_shape"
+    tools:context=".ui.TodayDetailsActivity">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:fillViewport="true"  >
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/today_app_details_root_layout"
+            android:paddingTop="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="100dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:id="@+id/google_app_details_short_description"
+                android:layout_width="0dp"
+                android:paddingStart="@dimen/margin_large"
+                android:paddingEnd="@dimen/margin_large"
+                android:textAlignment="center"
+                android:paddingTop="@dimen/margin_large"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="this is dummy text for app from google play store for design time"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/linearLayout2"
+                tools:height="100dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:overScrollMode="never"
+                android:id="@+id/google_app_details_screenshot_recycler"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/margin_normal"
+                android:paddingEnd="@dimen/margin_normal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/google_app_details_short_description"
+                tools:background="@color/colorGoogleLightYellow"
+                tools:layout_height="220dp"
+                tools:listitem="@layout/item_small_screenshot" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:id="@+id/google_app_permission_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/google_app_details_screenshot_recycler">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_permission_holer"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:layout_marginBottom="@dimen/margin_normal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="@string/all_permission"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:id="@+id/google_app_details_permission_recycler"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/margin_normal"
+                        android:paddingEnd="@dimen/margin_normal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_permission_holer"
+                        tools:background="@color/colorGoogleLightYellow"
+                        tools:layout_height="220dp"
+                        tools:listitem="@layout/item_app_permission" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/image_header_card"
+                android:layout_width="0dp"
+                android:layout_height="240dp"
+                android:layout_margin="@dimen/margin_normal"
+                android:elevation="0dp"
+                app:cardCornerRadius="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/welcome" />
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_header_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <TextView
+                        android:id="@+id/today_app_full_description_part1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:paddingStart="@dimen/margin_large"
+                        android:paddingEnd="@dimen/margin_large"
+                        android:paddingBottom="@dimen/margin_medium"
+                        android:textAlignment="textStart"
+                        android:textSize="14sp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        tools:text="\t\t\t\tthe app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiythe app details activiy,the app details activiy,the app details activiy,the app details activiythe app details activiy" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/app_details_screenshot_card_a"
+                        android:layout_width="0dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="@dimen/margin_normal"
+                        android:visibility="gone"
+
+                        app:cardCornerRadius="24dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/today_app_full_description_part1">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/app_details_screenshot_a"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/welcome" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/today_app_full_description_part2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/margin_large"
+                        android:paddingEnd="@dimen/margin_large"
+                        android:paddingBottom="@dimen/margin_medium"
+                        android:textAlignment="textStart"
+                        android:textSize="14sp"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/app_details_screenshot_card_a"
+                        tools:text="\t\t\t\tthe app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiythe app details activiy,the app details activiy,the app details activiy,the app details activiythe app details activiy" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/app_details_screenshot_card_b"
+                        android:layout_width="0dp"
+                        android:layout_height="230dp"
+                        android:layout_margin="@dimen/margin_normal"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        app:cardCornerRadius="24dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/today_app_full_description_part2">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/app_details_screenshot_b"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/welcome" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/today_app_full_description_part3"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/margin_large"
+                        android:paddingEnd="@dimen/margin_large"
+                        android:paddingBottom="@dimen/margin_large"
+                        android:textAlignment="textStart"
+                        android:textSize="14sp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/app_details_screenshot_card_b"
+                        tools:text="\t\t\t\tthe app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiy,the app details activiythe app details activiy,the app details activiy,the app details activiy,the app details activiythe app details activiy" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/user_review_text_holder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:text="@string/review_placeholder"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+
+                        app:layout_constraintStart_toStartOf="@+id/app_details_screenshot_card_b"
+                        app:layout_constraintTop_toBottomOf="@id/today_app_full_description_part3" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:overScrollMode="never"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:id="@+id/today_app_user_review_recycler"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/user_review_text_holder"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:listitem="@layout/item_user_review"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:id="@+id/no_user_reviews"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="还没有人评论哦"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/user_review_text_holder" />
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <io.alterac.blurkit.BlurLayout
+            android:id="@+id/app_details_blurkitlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:background="#6AE63626"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/app_details_app_icon"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/app_details_app_displayname"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/avatar" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/app_details_app_displayname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/app_details_app_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/app_details_app_icon"
+                    tools:text="Google Play" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        tools:visibility="visible"
+        android:visibility="gone"
+        android:id="@+id/favorite_active_img"
+        android:translationZ="2dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/ic_favourite_active"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.bottomappbar.BottomAppBar
+
+        android:id="@+id/app_details_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:navigationIcon="@drawable/ic_arrow_back_24px"
+        app:hideOnScroll="true"
+        app:menu="@menu/app_details_appbar_menu"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        app:backgroundTint="?android:attr/colorBackground"
+        android:src="@drawable/ic_share_black_24dp"
+        android:id="@+id/app_details_bottom_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/app_details_bottom_bar"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

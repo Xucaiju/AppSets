@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_xlarge">32dp</dimen>
+    <dimen name="margin_xxlarge">42dp</dimen>
+    <dimen name="margin_xxxlarge">52dp</dimen>
+    <dimen name="margin_xxxxxxlarge">88dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_medium">12dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_xsmall">6dp</dimen>
+    <dimen name="margin_xxsmall">4dp</dimen>
+    <dimen name="margin_bottom">64dp</dimen>
+    <dimen name="padding_top">72dp</dimen>
+    <dimen name="padding_top_large">106dp</dimen>
+
+    <dimen name="bottom_sheet_corner_radius">16dp</dimen>
+    <dimen name="bottom_sheet_top_padding">8dp</dimen>
+    <dimen name="bottom_nav_padding">64dp</dimen>
+    <dimen name="icon_size_xsmall">48dp</dimen>
+    <dimen name="icon_size">56dp</dimen>
+    <dimen name="icon_size_normal">72dp</dimen>
+    <dimen name="icon_size_big">96dp</dimen>
+    <dimen name="icon_size_biger">106dp</dimen>
+    <dimen name="icon_size_small">52dp</dimen>
+    <dimen name="icon_size_med">48dp</dimen>
+    <dimen name="icon_size_cat">36dp</dimen>
+    <dimen name="icon_size_default">24dp</dimen>
+
+
+    <dimen name="height_searchview">52dp</dimen>
+    <dimen name="height_button">52dp</dimen>
+    <dimen name="height_nav_header">148dp</dimen>
+    <dimen name="height_search_view">52dp</dimen>
+    <dimen name="height_search_view_small">48dp</dimen>
+    <dimen name="height_search_view_xsmall">42dp</dimen>
+</resources>

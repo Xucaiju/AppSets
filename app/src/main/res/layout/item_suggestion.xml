@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?selectableItemBackground"
+    android:padding="@dimen/margin_normal">
+
+    <com.google.android.material.chip.Chip
+        style="@style/Widget.MaterialComponents.Chip.Action"
+        android:id="@+id/suggest_item_chip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:chipStrokeWidth="1dp"
+        android:longClickable="false"
+        android:shadowColor="@color/colorTransparent"
+        app:rippleColor="@color/colorTransparent"
+        app:chipStrokeColor="?android:attr/colorAccent"
+        android:backgroundTint="@color/colorTransparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="google" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

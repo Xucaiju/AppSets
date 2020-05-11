@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.button.MaterialButton
+    android:id="@+id/category_item_button"
+    android:layout_width="match_parent"
+    android:layout_height="82dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:maxHeight="82dp"
+    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+    app:backgroundTint="#8A63FFB3"
+    app:strokeWidth="0dp"
+    android:textAllCaps="false"
+    app:cornerRadius="8dp"
+    app:iconTint="?android:attr/textColorSecondary"
+    android:textColor="?android:attr/textColorSecondary"
+    android:minHeight="52dp"
+    android:layout_margin="@dimen/margin_medium"
+    tools:text="Shopping"
+    tools:icon="@drawable/ic_shopping_cart_black_24dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

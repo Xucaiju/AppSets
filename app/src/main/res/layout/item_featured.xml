@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Aurora Store
+  ~ Copyright (C) 2019, Rahul Kumar Patel <whyorean@gmail.com>
+  ~
+  ~ Aurora Store is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Aurora Store is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Aurora Store.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_normal"
+
+    android:layout_marginBottom="@dimen/margin_medium">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/app_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="@dimen/margin_medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_favourite_active" />
+
+        <com.skydoves.transformationlayout.TransformationLayout
+            android:id="@+id/fragmentHome_transformationlayout"
+            app:transformation_duration="360"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/app_icon"
+            app:layout_constraintTop_toTopOf="parent">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/homeAppCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1.5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/app_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_toStartOf="@id/txt_indicator"
+                        android:ellipsize="none"
+                        android:fadingEdgeLength="16dp"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:requiresFadingEdge="horizontal"
+                        android:singleLine="true"
+                        android:text="App Name"
+                        android:maxLength="38"
+                        android:textAppearance="@style/AppSets.TextAppearance.SubTitle"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/app_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/app_name"
+                        android:layout_marginEnd="@dimen/margin_medium"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@style/AppSets.TextAppearance.Line3"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/app_name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/app_name"
+                        tools:text="6 MB" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/app_description"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_large"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/margin_large"
+                        android:textAppearance="@style/AppSets.TextAppearance.Line2"
+                        app:layout_constraintBottom_toTopOf="@+id/txt_indicator"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/app_name"
+                        app:layout_constraintTop_toBottomOf="@+id/app_name" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@id/app_name"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/margin_xxsmall"
+                        android:layout_marginBottom="@dimen/margin_xxsmall"
+                        android:drawableEnd="@drawable/ic_done_black_24dp"
+                        android:drawablePadding="@dimen/margin_small"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/margin_xxsmall"
+                        android:text="@string/action_installed"
+                        android:textAppearance="@style/AppSets.TextAppearance.Line3"
+                        android:textStyle="normal"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:visibility="visible" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </com.skydoves.transformationlayout.TransformationLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

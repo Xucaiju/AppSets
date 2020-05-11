@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottomsheet_round">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:text="评分"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/materialTextView8">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text="全部"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightYellow"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text="1+"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightYellow"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text="2+"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightYellow"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text="3+"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightYellow"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text="4+"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightYellow"
+            app:chipStrokeWidth="1dp" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large"
+        android:text="下载次数"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chipGroup2" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:id="@+id/chipGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialTextView10">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text=">100"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightGreen"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text=">1K"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightGreen"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text=">10K"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightGreen"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text=">100K"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightGreen"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text=">1000K"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightGreen"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text=">10000K"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightGreen"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text=">20000K"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightGreen"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text=">40000K"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightGreen"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text=">80000K"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightGreen"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text=">100M"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightGreen"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text=">200M"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightGreen"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text=">10B"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLightGreen"
+            app:chipStrokeWidth="1dp" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large"
+        android:text="其他"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialTextView12">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text="依赖谷歌框架"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLigntRed"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text="不包含广告"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLigntRed"
+            app:chipStrokeWidth="1dp" />
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_xxsmall"
+            android:paddingEnd="@dimen/margin_xxsmall"
+            android:text="免费"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipStrokeColor="@color/colorGoogleLigntRed"
+            app:chipStrokeWidth="1dp" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="24dp"
+        android:text="确定"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/chipGroup3"
+        app:layout_constraintTop_toBottomOf="@+id/chipGroup3" />
+</androidx.constraintlayout.widget.ConstraintLayout>
