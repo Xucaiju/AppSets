@@ -1,6 +1,6 @@
 # AppSets
 <img src="https://i.loli.net/2020/04/30/kWQH2nTSPXVed4B.png" width="68" height="68"/><br>
-An app store, inspired by Aurora Store. 100% written in Kotlin
+An app store, inspired by Aurora Store. by Kotlin
 # Features
 * Recommend apps every day, not just Android platforms.
 * Browse the content of Google Play Store.
