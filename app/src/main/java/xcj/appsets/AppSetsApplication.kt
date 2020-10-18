@@ -152,11 +152,6 @@ class AppSetsApplication:Application() {
                 lockscreenVisibility = NotificationCompat.VISIBILITY_PUBLIC
             }
 
-
-
-
-
-
             val notificationManager = getSystemService(
                 NotificationManager::class.java
             )

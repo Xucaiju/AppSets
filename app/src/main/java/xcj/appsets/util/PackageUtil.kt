@@ -61,9 +61,9 @@ object PackageUtil {
         return try {
             var app = App()
             val packageInfo =
-                packageManager.getPackageInfo(packageName, PackageManager.GET_META_DATA)
+                packageName?.let { packageManager.getPackageInfo(it, PackageManager.GET_META_DATA) }
             app.setPackageName(packageName)
-            app.setDisplayName(packageManager.getApplicationLabel(packageInfo.applicationInfo).toString())
+            app.setDisplayName(packageManager.getApplicationLabel(packageInfo?.applicationInfo!!).toString())
             app.setVersionName(packageInfo.versionName)
             app.setVersionCode(packageInfo.versionCode)
             app.setSystem(packageInfo.applicationInfo.flags and ApplicationInfo.FLAG_SYSTEM != 0)
@@ -75,8 +75,7 @@ object PackageUtil {
 
     fun isSystemApp(packageManager: PackageManager, packageName: String?): Boolean {
         return try {
-            val packageInfo =
-                packageManager.getPackageInfo(packageName, 0)
+            val packageInfo = packageManager.getPackageInfo(packageName?:"", 0)
             packageInfo.applicationInfo.flags and ApplicationInfo.FLAG_SYSTEM != 0
         } catch (e: PackageManager.NameNotFoundException) {
             false
@@ -93,7 +92,7 @@ object PackageUtil {
 
     fun isInstalled(context: Context, app: App): Boolean {
         return try {
-            context.packageManager.getPackageInfo(app.getPackageName(), 0)
+            app.getPackageName()?.let { context.packageManager.getPackageInfo(it, 0) }
             true
         } catch (e: Exception) {
             false
@@ -102,7 +101,9 @@ object PackageUtil {
 
     fun isInstalled(context: Context, packageName: String?): Boolean {
         return try {
-            context.packageManager.getPackageInfo(packageName, 0)
+            if (packageName != null) {
+                context.packageManager.getPackageInfo(packageName, 0)
+            }
             true
         } catch (e: Exception) {
             false

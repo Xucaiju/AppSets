@@ -154,7 +154,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/welcome" />
+                    />
             </com.google.android.material.card.MaterialCardView>
 
 
@@ -205,8 +205,7 @@
                             android:id="@+id/app_details_screenshot_a"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/welcome" />
+                            android:scaleType="centerCrop" />
                     </com.google.android.material.card.MaterialCardView>
 
                     <TextView
@@ -242,7 +241,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/welcome" />
+                             />
                     </com.google.android.material.card.MaterialCardView>
 
                     <TextView

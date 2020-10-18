@@ -7,7 +7,7 @@
         <item name="itemIconTint">@color/color_selector</item>
         <item name="colorAccent">@color/color_selector</item>
         <item name="itemTextColor">@color/color_selector</item>
-        <item name="labelVisibilityMode">labeled</item>
+        <item name="labelVisibilityMode">selected</item>
     </style>
 
     <style name="AppSets.Widget.Toolbar" parent="Widget.AppCompat.Toolbar">

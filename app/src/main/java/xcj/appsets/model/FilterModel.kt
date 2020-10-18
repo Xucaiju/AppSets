@@ -2,19 +2,12 @@ package xcj.appsets.model
 
 import xcj.appsets.Constant
 
-class FilterModel {
-    private val systemApps = false
-    private val appsWithAds = true
-    private val paidApps = true
-    private val gsfDependentApps = true
-    private val category: String = Constant.TOP
-    private val rating = 0.0f
-    private val downloads = 0
-    fun isPaidApps() = this.paidApps
-    fun isSystemApps() = this.systemApps
-    fun isAppsWithAds() = this.appsWithAds
-    fun isGsfDependentApps() = this.gsfDependentApps
-    fun getCategory() = this.category
-    fun getRating() = this.rating
-    fun getDownloads() = this.downloads
-}
+data class FilterModel(
+    var systemApps:Boolean = false,
+    var appsWithAds:Boolean = true,
+    var paidApps:Boolean = true,
+    var gsfDependentApps:Boolean = true,
+    var category: String = Constant.TOP,
+    var rating:Float = 0.0f,
+    var downloads:Int = 0
+)

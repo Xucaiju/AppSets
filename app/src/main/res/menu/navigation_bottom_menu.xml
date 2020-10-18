@@ -39,6 +39,12 @@
     android:checked="false"
     android:id="@+id/fragmentFavorite"
     app:showAsAction="always"
-    android:icon="@drawable/ic_favorite_border_black"
-    android:title="@string/favorite" />
+    android:icon="@drawable/ic_face_black_24dp"
+    android:title="@string/manager" />
+    <item
+        android:checked="false"
+        android:id="@+id/fragmentCommunity"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_timeline_1"
+        android:title="@string/manager" />
 </menu>

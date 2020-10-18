@@ -13,7 +13,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.observe
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dragons.aurora.playstoreapiv2.SearchSuggestEntry
 import com.google.android.material.snackbar.Snackbar
 import com.skydoves.transformationlayout.onTransformationEndContainer
@@ -32,7 +32,7 @@ class SearchActivity: BaseActivity(), SearchSuggestionSection.ClickListener {
 
     private var query: String? = null
     private var section: SearchSuggestionSection? = null
-    private var adapter: SectionedRecyclerViewAdapter? = null
+    private var madapter: SectionedRecyclerViewAdapter? = null
     private val interpolator = AccelerateDecelerateInterpolator()
     override fun onCreate(savedInstanceState: Bundle?) {
         onTransformationEndContainer(intent.getParcelableExtra("com.skydoves.transformationlayout"))
@@ -44,7 +44,7 @@ class SearchActivity: BaseActivity(), SearchSuggestionSection.ClickListener {
             .observe(this){
                 dispatchAppsToAdapter(it)
             }
-        suggestionModel.error.observe(this, { errorType ->
+        suggestionModel.error.observe(this) { errorType ->
             when (errorType) {
                 ErrorType.NO_API, ErrorType.SESSION_EXPIRED -> {
                     validateApi(this)
@@ -58,27 +58,30 @@ class SearchActivity: BaseActivity(), SearchSuggestionSection.ClickListener {
                     snackbar.show()
                 }
             }
-        })
+        }
         setupSearch(suggestionModel)
         setupSuggestionRecycler()
 
     }
     private fun setupSuggestionRecycler() {
         section = SearchSuggestionSection(this, this)
-        adapter = SectionedRecyclerViewAdapter()
-        adapter?.addSection(section)
-        suggestion_recycler.adapter = adapter
-        suggestion_recycler.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.HORIZONTAL)
+        madapter = SectionedRecyclerViewAdapter()
+        madapter?.addSection(section)
+        suggestion_recycler.apply{
+            adapter = madapter
+            layoutManager = LinearLayoutManager(this@SearchActivity)
+        }
+
     }
     private fun dispatchAppsToAdapter(suggestEntryList: List<SearchSuggestEntry>) {
         val oldList: List<SearchSuggestEntry>? = section?.list
         if (oldList?.isNotEmpty()!!) {
             section?.list?.clear()
-            adapter?.notifyDataSetChanged()
+            madapter?.notifyDataSetChanged()
         }
         if (suggestEntryList.isNotEmpty()) {
             section?.addData(suggestEntryList)
-            adapter?.notifyDataSetChanged()
+            madapter?.notifyDataSetChanged()
         }
     }
 

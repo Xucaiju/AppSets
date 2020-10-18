@@ -1,3 +1,4 @@
+/*
 package xcj.appsets.extendedclass
 
 import android.content.Context
@@ -9,10 +10,13 @@ import androidx.navigation.NavOptions
 import androidx.navigation.Navigator
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.NavHostFragment
+import java.util.*
 
+*/
 /**
  * 复用的NavHostFragment （默认不是复用 引起一个问题就是 不保存fragment状态）
- */
+ *//*
+
 class MyNavHostFragment : NavHostFragment() {
     override fun createFragmentNavigator(): Navigator<out FragmentNavigator.Destination> {
         return MyNavigator(requireContext(), childFragmentManager, id)
@@ -141,3 +145,4 @@ class MyNavHostFragment : NavHostFragment() {
         }
     }
 }
+*/

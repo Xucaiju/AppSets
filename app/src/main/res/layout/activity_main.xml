@@ -11,6 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <fragment
                 android:id="@+id/main_nav_host"
                 android:name="androidx.navigation.fragment.NavHostFragment"
@@ -19,10 +20,11 @@
                 app:defaultNavHost="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
                 app:navGraph="@navigation/nav_main" />
-
 
             <com.skydoves.transformationlayout.TransformationLayout
                 android:id="@+id/transformationLayout"
@@ -55,7 +57,7 @@
                 tools:alpha="1"
                 android:background="#C0FFFFFF"
                 android:visibility="gone"
-                tools:visibility="visible"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +65,7 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/download_mini_fab_action"
-                android:elevation="2dp"
+                android:elevation="1dp"
                 android:translationY="64dp"
                 tools:translationY="0dp"
                 android:alpha="0"
@@ -83,26 +85,64 @@
                 app:layout_constraintBottom_toTopOf="@+id/open_category_action"
                 app:layout_constraintEnd_toEndOf="@+id/open_category_action"
                 app:layout_constraintStart_toStartOf="@+id/open_category_action" />
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/open_category_action"
-                android:padding="@dimen/margin_normal"
-                android:elevation="2dp"
-                android:background="@drawable/circle_bg_light"
-                android:layout_marginEnd="@dimen/margin_normal"
-                android:layout_marginBottom="86dp"
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/post_trends_min_action"
+                android:src="@drawable/ic_whatshot_24px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_category_black_24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:fabSize="mini"
+                android:elevation="1dp"
+                android:translationY="116dp"
+                tools:translationY="0dp"
+                android:alpha="0"
+                tools:alpha="1"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:scaleX="0.3"
+                android:scaleY="0.3"
+                tools:scaleY="1"
+                tools:scaleX="1"
+                app:backgroundTint="?android:attr/colorBackground"
+                android:layout_marginBottom="76dp"
+                app:layout_constraintBottom_toTopOf="@+id/open_category_action"
+                app:layout_constraintEnd_toEndOf="@+id/open_category_action"
+                app:layout_constraintStart_toStartOf="@+id/open_category_action" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/open_category_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:background="@drawable/circle_bg_light"
+                android:elevation="6dp"
+                android:padding="@dimen/margin_normal"
+                android:layout_marginBottom="24dp"
+                android:src="@drawable/ic_plus"
+                app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
                 app:layout_constraintEnd_toEndOf="parent" />
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/post_trends_action_hint_text"
+                android:alpha="0"
+                tools:alpha="1"
+                android:translationY="28dp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                tools:translationY="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="90dp"
+                android:text="@string/post_trends"
+                app:layout_constraintBottom_toTopOf="@+id/open_category_action"
+                app:layout_constraintEnd_toEndOf="@+id/open_category_action_hint_text" />
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/download_mini_fab_action_hint_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_xlarge"
                 android:alpha="0"
-                android:text="下载内容"
+                android:text="@string/download_content"
                 android:translationY="24dp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@+id/open_category_action"
@@ -122,27 +162,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin_normal"
-                android:text="分类"
+                android:text="@string/category"
                 app:layout_constraintBottom_toBottomOf="@+id/open_category_action"
                 app:layout_constraintEnd_toStartOf="@+id/open_category_action"
                 app:layout_constraintTop_toTopOf="@+id/open_category_action" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#99ECECEC"
+                app:layout_constraintBottom_toTopOf="@+id/bottomNavigation" />
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigation"
+                style="@style/AppSets.Widget.BottomNavigation"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:itemRippleColor="@color/colorTransparent"
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        style="@style/AppSets.Widget.BottomNavigation"
-        android:layout_gravity="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="50dp"
-        android:paddingEnd="50dp"
-        app:itemRippleColor="@color/colorTransparent"
-        app:itemTextAppearanceActive="@style/AppSets.TextAppearance.BottomNav.Active"
-        app:itemTextAppearanceInactive="@style/AppSets.TextAppearance.BottomNav.Inactive"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/navigation_bottom_menu" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/navigation_bottom_menu" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--
+    app:itemTextAppearanceActive="@style/AppSets.TextAppearance.BottomNav.Active"
+                app:itemTextAppearanceInactive="@style/AppSets.TextAppearance.BottomNav.Inactive"-->
+i
     <!--app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"-->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

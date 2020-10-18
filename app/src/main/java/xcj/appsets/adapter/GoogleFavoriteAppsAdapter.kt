@@ -60,26 +60,31 @@ class GoogleFavoriteAppsAdapter(var context: Context):
     override fun onBindViewHolder(holder: GoogleFavoriteAppsAdapter.ViewHolder, position: Int) {
 
         googleFavoriteAppsList?.get(position)?.let {
-            holder.appDisplayName?.text = it.getDisplayName()?:context.getString(R.string.action_unknown)
-            holder.appDeveloperName?.text = it.getDeveloperName()?:context.getString(R.string.action_unknown)
-            holder.appDescription?.text = it.getShortDescription()?:context.getString(R.string.action_unknown)
+            holder.appDisplayName?.text = it?.getDisplayName()?:context.getString(R.string.action_unknown)
+            holder.appDeveloperName?.text = it?.getDeveloperName()?:context.getString(R.string.action_unknown)
+            holder.appDescription?.text = it?.getShortDescription()?:context.getString(R.string.action_unknown)
             holder.iconImage?.let { it1 ->
-                Glide
-                    .with(context)
-                    .asBitmap()
-                    .load(it.getIconUrl())
-                    .placeholder(R.color.colorTransparent)
-                    .transition(BitmapTransitionOptions().crossFade(100))
-                    .transform(CenterCrop(), RoundedCorners(250))
-                    .into(it1)
+                it?.getIconUrl()?.let {it2->
+                    Glide
+                        .with(context)
+                        .asBitmap()
+                        .load(it2)
+                        .placeholder(R.color.colorTransparent)
+                        .transition(BitmapTransitionOptions().crossFade(100))
+                        .transform(CenterCrop(), RoundedCorners(250))
+                        .into(it1)
+                }
+
             }
             AsyncTask.execute {
-                val imgCacheFile: File? = Glide.with(context).asFile().load(it.getIconUrl()).submit().get()
-                imgCacheFile?.let {file->
-                    val bitmap = BitmapFactory.decodeFile(file.path)
-                    Palette.from(bitmap).generate { palette->
-                        val color = palette?.getLightVibrantColor(Color.BLUE)
-                        holder.appContentCard?.strokeColor = color!!
+                it?.getIconUrl()?.let {
+                    val imgCacheFile: File? = Glide.with(context)?.asFile()?.load(it).submit().get()
+                    imgCacheFile?.let {file->
+                        val bitmap = BitmapFactory.decodeFile(file.path)
+                        Palette.from(bitmap).generate { palette->
+                            val color = palette?.getLightVibrantColor(Color.BLUE)
+                            holder.appContentCard?.strokeColor = color!!
+                        }
                     }
                 }
             }

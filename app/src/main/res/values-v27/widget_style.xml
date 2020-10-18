@@ -4,7 +4,7 @@
     <style name="AppSets.Widget.BottomNavigation" parent="@style/Widget.MaterialComponents.BottomNavigationView">
         <item name="itemIconTint">@color/color_selector</item>
         <item name="itemTextColor">@color/color_selector</item>
-        <item name="labelVisibilityMode">labeled</item>
+        <item name="labelVisibilityMode">selected</item>
         <item name="colorAccent">@color/color_selector</item>
     </style>
 </resources>

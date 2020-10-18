@@ -32,17 +32,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.search_view.*
 import xcj.appsets.AppSetsApplication
 import xcj.appsets.Constant
-import xcj.appsets.DownloadManagerActivity
 import xcj.appsets.R
 import xcj.appsets.events.Event
-import xcj.appsets.extendedclass.CategorySelectBottomSheetDialogFragment
-import xcj.appsets.extendedclass.UserProfileBottomSheetDailogFragment
 import xcj.appsets.model.AppSetsLoginInfo
 import xcj.appsets.service.ApiValidateService
-import xcj.appsets.ui.fragment.DialogFragment
-import xcj.appsets.ui.fragment.FragmentFavorite
-import xcj.appsets.ui.fragment.FragmentHome
-import xcj.appsets.ui.fragment.FragmentToday
+import xcj.appsets.ui.fragment.*
 import xcj.appsets.util.*
 
 
@@ -54,6 +48,8 @@ class MainActivity : BaseActivity() {
     lateinit var miniFabActionHintText:MaterialTextView
     lateinit var miniFabAction:FloatingActionButton
     lateinit var openCategoryAction:AppCompatImageView
+    lateinit var postTrendsAction:FloatingActionButton
+    lateinit var postTrendsActionHintText:MaterialTextView
     override fun onDestroy() {
         disposable.clear()
         disposable.dispose()
@@ -74,21 +70,20 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        onTransformationStartContainer()
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
         if (NetworkUtil.isConnected(this)) {
             if (isHomeAppCacheObsolete(this))
                 clearHomeAppCache(this)
         }
-
-        onTransformationStartContainer()
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
         frameLayout1 = when_fab_clicked_show_framelayout
         openCategoryActionHintText = open_category_action_hint_text
         miniFabActionHintText = download_mini_fab_action_hint_text
         miniFabAction = download_mini_fab_action
         openCategoryAction = open_category_action
+        postTrendsAction = post_trends_min_action
+        postTrendsActionHintText = post_trends_action_hint_text
         disposable.add(Observable.fromCallable {
             bottomNavigation?.getOrCreateBadge(R.id.fragmentFavorite)?.number
         }.subscribeOn(Schedulers.computation())
@@ -108,7 +103,7 @@ class MainActivity : BaseActivity() {
         fillSearchBarUserAvatar(this, searchbar_user_avatar)
         fragmentCur = getDefaultTab(this)
         val backGroundColor = ViewUtil.getStyledAttribute(this, android.R.attr.colorBackground)
-        bottomNavigation?.setBackgroundColor(ColorUtils.setAlphaComponent(backGroundColor, 250))
+        bottomNavigation?.setBackgroundColor(ColorUtils.setAlphaComponent(backGroundColor, 220))
 
         navigationController = findNavController(R.id.main_nav_host)
 
@@ -172,10 +167,27 @@ class MainActivity : BaseActivity() {
                     download_mini_fab_action_hint_text.visibility = View.GONE
                 }
                 .start()
+            postTrendsActionHintText.animate()
+                .setDuration(150)
+                .translationY(90f)
+                .alpha(0f)
+                .withEndAction {
+                    post_trends_action_hint_text.visibility = View.GONE
+                }.start()
             openCategoryAction
                 .animate()
                 .setDuration(150)
                 .rotation(0f)
+                .start()
+            postTrendsAction .animate()
+                .setDuration(150)
+                .translationY(112f)
+                .scaleY(0.3f)
+                .scaleX(0.3f)
+                .alpha(0f)
+                .setInterpolator(AccelerateInterpolator()).withEndAction {
+                    postTrendsAction.visibility = View.GONE
+                }
                 .start()
             miniFabAction
                 .animate()
@@ -193,18 +205,18 @@ class MainActivity : BaseActivity() {
         openCategoryAction?.setOnClickListener {
             it.animate().setDuration(150).rotation(-135f).start()
 
-            //Log.d("framelayout==null?", "${frameLayout1==null}")
             miniFabAction?.apply {
                 if (visibility==View.VISIBLE) {
 
-                    val categoryDialogFragment = CategorySelectBottomSheetDialogFragment()
+                    val categoryDialogFragment =
+                        CategorySelectBottomSheetDialogFragment()
                     categoryDialogFragment.show(supportFragmentManager, categoryDialogFragment.tag)
                 } else {
                         val fragments = supportFragmentManager.fragments
                         for (fragment in fragments) {
-                            fragment.view?.isClickable = fragment !is FragmentToday
-                            fragment.view?.isClickable = fragment !is FragmentHome
-                            fragment.view?.isClickable = fragment !is FragmentFavorite
+                            fragment.view?.isClickable = fragment !is FragmentRecommend
+                            fragment.view?.isClickable = fragment !is FragmentGoogleApps
+                            fragment.view?.isClickable = fragment !is FragmentMine
                         }
 
                      miniFabActionHintText
@@ -224,6 +236,14 @@ class MainActivity : BaseActivity() {
                             openCategoryActionHintText.visibility = View.VISIBLE
                         }
                         .start()
+                    postTrendsActionHintText .animate()
+                        .setDuration(150)
+                        .alpha(1f)
+                        .translationY(0f)
+                        .withStartAction{
+                            postTrendsActionHintText.visibility = View.VISIBLE
+                        }
+                        .start()
                     frameLayout1?.let {l->
                         l.animate()
                         .alpha(1f)
@@ -233,7 +253,20 @@ class MainActivity : BaseActivity() {
                             }
                         .start()
                     }
-
+                    postTrendsAction.animate()
+                        .setDuration(150)
+                        .translationY(0f)
+                        .scaleY(1f)
+                        .scaleX(1f)
+                        .alpha(1f)
+                        .withStartAction {
+                            postTrendsAction.visibility = View.VISIBLE
+                        }
+                        .setInterpolator(DecelerateInterpolator())
+                        .withEndAction {
+                            clearAnimation()
+                        }
+                        .start()
                     animate()
                         .setDuration(150)
                         .translationY(0f)
@@ -252,13 +285,13 @@ class MainActivity : BaseActivity() {
             }
         }
 
-        when (fragmentCur) {
-            0 -> navigationController.navigate(R.id.fragmentToday)
+        /*when (fragmentCur) {
+            0 -> navigationController.navigate(R.id.fragmentRecommend)
             1 ->{
-                navigationController.navigate(R.id.fragmentHome)
+                navigationController.navigate(R.id.fragmentGoogleApps)
             }
-            2 -> navigationController.navigate(R.id.fragmentFavorite)
-        }
+            2 -> navigationController.navigate(R.id.fragmentMine)
+        }*/
 
         AppSetsApplication.getRxBus()?.getBus()?.subscribe { event ->
             when (event?.getSubType()) {
@@ -308,9 +341,6 @@ class MainActivity : BaseActivity() {
 
     }
 
- /*   private fun setListener() {
-
-    }*/
 
     private fun stopApiValidateService() {
         stopService(Intent(this, ApiValidateService::class.java))
@@ -325,7 +355,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return true
+        return false
     }
 
 

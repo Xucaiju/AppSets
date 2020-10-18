@@ -2,12 +2,13 @@ package xcj.appsets.model
 
 import android.view.View
 import android.widget.LinearLayout
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_nested_scroll.view.*
 import xcj.appsets.adapter.SmallScreenShotAdapter
 
-class Screenshot(var mview: View?, var mapp: App?) : AbstractDetails(mview, mapp) {
+class Screenshot(mview: View?, mapp: App?, val fragmentManager: FragmentManager) : AbstractDetails(mview, mapp) {
 
     var rootLayout: LinearLayout? = mview?.app_details_root
     var recyclerView: RecyclerView? = mview?.bottom_sheet_screenshot_recycler
@@ -29,7 +30,8 @@ class Screenshot(var mview: View?, var mapp: App?) : AbstractDetails(mview, mapp
                 context?.let { it1 ->
                     SmallScreenShotAdapter(
                         it,
-                        it1
+                        it1,
+                        fragmentManager
                     )
                 }
             }

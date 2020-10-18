@@ -6,6 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".ui.SignupActivity">
 
+    <GridLayout
+        android:layout_marginTop="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chip_about">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toTopOf="@+id/materialTextView"
+            app:layout_constraintEnd_toEndOf="@+id/materialTextView"
+            app:layout_constraintStart_toStartOf="@+id/materialTextView" />
+
+        <com.google.android.material.textview.MaterialTextView
+
+            android:id="@+id/materialTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/signup_to_appsets"
+            android:textColor="#1E1E1E"
+            android:textSize="24sp"
+            android:layout_marginStart="8dp"
+            android:textStyle="bold" />
+    </GridLayout>
 
     <com.google.android.material.chip.Chip
         android:id="@+id/chip_about"
@@ -16,33 +44,27 @@
         android:layout_marginTop="@dimen/margin_xlarge"
         android:onClick="toAbout"
         android:text="@string/about"
-        app:chipBackgroundColor="#95DC98"
+        app:chipStrokeColor="#95DC98"
+        app:chipBackgroundColor="@color/colorTransparent"
+        app:chipStrokeWidth="1.5dp"
+        android:elevation="0dp"
         app:chipIcon="@drawable/ic_help_outline_black_24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textview.MaterialTextView
 
-        android:id="@+id/materialTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/signup_to_appsets"
-        android:textColor="#1E1E1E"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guideline9"
-        app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <com.google.android.material.textfield.TextInputLayout
 
         android:id="@+id/signTextInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_height="58dp"
+        android:layout_height="wrap_content"
         android:hint="@string/account"
         app:endIconMode="clear_text"
         app:helperTextEnabled="true"
+        app:helperText="用于AppSets登录的账号"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/guideline12">
@@ -58,9 +80,12 @@
         android:id="@+id/signTextInputLayout2"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="@dimen/margin_large"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
         android:hint="@string/password"
+        app:helperText="用户AppSets登录的密码"
+        app:helperTextEnabled="true"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/signTextInputLayout">
@@ -76,9 +101,12 @@
         android:id="@+id/signTextInputLayout3"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="@dimen/margin_large"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
         android:hint="@string/repeatp_assword"
+        app:errorEnabled="true"
+        app:helperText="再次确认密码"
+        app:helperTextEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/signTextInputLayout2">
@@ -90,6 +118,27 @@
             android:inputType="numberPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signTextInputLayout4"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/user_email"
+        app:helperText="用于找回密码或订阅推送"
+        app:helperTextEnabled="true"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toBottomOf="@+id/signTextInputLayout3"
+        android:layout_marginTop="@dimen/margin_medium">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signup_input_user_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailSubject" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/signup_button"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -98,9 +147,9 @@
         android:layout_marginTop="@dimen/margin_xlarge"
         android:text="@string/signup_text"
         android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="@+id/signTextInputLayout3"
-        app:layout_constraintStart_toStartOf="@+id/signTextInputLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/signTextInputLayout3" />
+        app:layout_constraintEnd_toEndOf="@+id/signTextInputLayout4"
+        app:layout_constraintStart_toStartOf="@+id/signTextInputLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/signTextInputLayout4" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -110,19 +159,14 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.33" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.18" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.13" />
+        app:layout_constraintGuide_percent="0.12" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"

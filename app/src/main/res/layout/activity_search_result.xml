@@ -11,7 +11,7 @@
         android:id="@+id/search_result_searbar_bar"
         layout="@layout/search_bar"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="48dp"
         android:layout_marginStart="@dimen/margin_normal"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="@dimen/margin_normal"
@@ -31,7 +31,7 @@
 
         <LinearLayout
             android:id="@+id/search_result_content_holder"
-            android:paddingTop="126dp"
+            android:paddingTop="86dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

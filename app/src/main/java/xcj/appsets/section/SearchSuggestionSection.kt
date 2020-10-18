@@ -10,7 +10,7 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.Section
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters
 import kotlinx.android.synthetic.main.item_suggestion.view.*
 import xcj.appsets.R
-import xcj.appsets.ui.fragment.FragmentToday.Companion.getRandomColorStateList
+import xcj.appsets.ui.fragment.FragmentRecommend.Companion.getRandomColorStateList
 
 class SearchSuggestionSection(
     private val context: Context,

@@ -36,9 +36,9 @@ import xcj.appsets.Constant
 import xcj.appsets.R
 import xcj.appsets.model.TodayApp
 import xcj.appsets.server.AppSetsServer.Companion.gson
-import xcj.appsets.ui.SettingsActivity.Companion.getAllActivitys
-import xcj.appsets.ui.fragment.FragmentToday
-import xcj.appsets.ui.fragment.FragmentToday.Companion.translate
+import xcj.appsets.ui.fragment.FragmentRecommend
+import xcj.appsets.ui.fragment.FragmentRecommend.Companion.translate
+import xcj.appsets.ui.preference.SettingsActivity.Companion.getAllActivitys
 import xcj.appsets.util.DensityUtil
 import xcj.appsets.util.PreferenceUtil
 import xcj.appsets.viewmodel.TimeLineAppModel
@@ -209,7 +209,7 @@ class TimeLineAdapter(
 
 
                         // step 2
-                        FragmentToday.updateLoggedUserFavoriteAppInCatch(
+                        FragmentRecommend.updateLoggedUserFavoriteAppInCatch(
                             0,
                             appList[position],
                             context
@@ -240,7 +240,7 @@ class TimeLineAdapter(
 
 
                         // step 2
-                        FragmentToday.updateLoggedUserFavoriteAppInCatch(
+                        FragmentRecommend.updateLoggedUserFavoriteAppInCatch(
                             1,
                             appList[position],
                             context
@@ -257,7 +257,7 @@ class TimeLineAdapter(
                     tag = "timeline_today_app_price_chip"
                     text = if (appList[position].appPrice?.toDouble() != 0.00) {
                         val price = appList[position].appPrice?.toDouble()?.let {
-                            FragmentToday.conversionPrice(
+                            FragmentRecommend.conversionPrice(
                                 it,context)
                         }
                         "${context.getString(R.string.app_price)}: $price ${context.getString(R.string.price_symbol)}"
@@ -265,14 +265,14 @@ class TimeLineAdapter(
                         context.getString(R.string.free)
                     }
                     chipStrokeWidth = DensityUtil.dip2px(context, 1f)
-                    chipStrokeColor = FragmentToday.getRandomColorStateList(context)
+                    chipStrokeColor = FragmentRecommend.getRandomColorStateList(context)
                     chipBackgroundColor = ColorStateList.valueOf(android.R.attr.colorBackground)
                 }
                 val favoritesChip = Chip(this.context).apply {
                     tag = "timeline_today_app_favorites_chip"
                     text = String.format(context.getString(R.string.app_favorites_times), appList[position].favorites)
                     chipStrokeWidth = DensityUtil.dip2px(context, 1f)
-                    chipStrokeColor = FragmentToday.getRandomColorStateList(context)
+                    chipStrokeColor = FragmentRecommend.getRandomColorStateList(context)
                     chipBackgroundColor = ColorStateList.valueOf(android.R.attr.colorBackground)
                 }
 
@@ -287,7 +287,7 @@ class TimeLineAdapter(
                             text = translate(type, context)
                             chipStrokeWidth = DensityUtil.dip2px(context, 1f)
                             chipStrokeColor =
-                                FragmentToday.getRandomColorStateList(context)
+                                FragmentRecommend.getRandomColorStateList(context)
                             chipBackgroundColor = ColorStateList.valueOf(android.R.attr.colorBackground)
 
                         }

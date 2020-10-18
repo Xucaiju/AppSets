@@ -6,26 +6,40 @@
     android:layout_height="wrap_content"
     android:background="@drawable/bottomsheet_round">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView5"
+    <GridLayout
+        android:layout_marginTop="8dp"
+        android:id="@+id/grid_layout_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/buy_via_appsets"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/materialTextView6"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/buy_via_appsets"
+            android:textStyle="bold" />
+    </GridLayout>
+
+
+    <View
+        android:layout_marginTop="16dp"
         android:id="@+id/linearLayout3"
         android:layout_width="0dp"
         android:layout_height="0.5dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/colorGray"
+        android:background="#BABABA"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialTextView5" />
+        app:layout_constraintTop_toBottomOf="@+id/grid_layout_1" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/materialTextView6"
@@ -78,12 +92,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/app_payment_app_icon" />
 
-    <LinearLayout
+    <View
         android:id="@+id/linearLayout5"
         android:layout_width="0dp"
         android:layout_height="0.5dp"
         android:layout_marginTop="32dp"
-        android:background="@color/colorGray"
+        android:background="#BABABA"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

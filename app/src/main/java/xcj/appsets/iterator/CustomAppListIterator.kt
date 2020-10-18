@@ -52,11 +52,11 @@ class CustomAppListIterator(private val iterator: AppListIterator) : Iterator<An
     }
 
     private fun shouldSkip(app: App): Boolean {
-        return (!filterModel.isPaidApps() && !(app.getIsFree()!!)
-                || !filterModel.isAppsWithAds() && app.getIsContainsAds()!!
-                || !filterModel.isGsfDependentApps() && app.getDependencies()!!.isNotEmpty()
-                || filterModel.getRating() > 0 && app.getRating()!!.getAverage() < filterModel.getRating()
-                || filterModel.getDownloads() > 0 && (app.getInstalls()!! < filterModel.getDownloads()))
+        return (!filterModel.paidApps && !(app.getIsFree()!!)
+                || !filterModel.appsWithAds && app.getIsContainsAds()!!
+                || !filterModel.gsfDependentApps && app.getDependencies()!!.isNotEmpty()
+                || filterModel.rating > 0 && app.getRating()!!.getAverage() < filterModel.rating
+                || filterModel.downloads > 0 && (app.getInstalls()!! < filterModel.downloads))
     }
 
     private fun addApp(apps: MutableList<App>, app: App) {

@@ -12,7 +12,6 @@ import androidx.lifecycle.LiveData
 import xcj.appsets.model.ConnectionModel
 
 class ConnectionLiveData(private var context: Context):LiveData<ConnectionModel>() {
-
     private var networkReceiver:BroadcastReceiver = object:BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if(intent.extras != null) {
@@ -42,7 +41,7 @@ class ConnectionLiveData(private var context: Context):LiveData<ConnectionModel>
                                 postValue(ConnectionModel(activeNetworkInfo.typeName, isConnected))
                             }
                         }catch (e:Exception){
-                            postValue(ConnectionModel(activeNetworkInfo.typeName,false))
+                            postValue(ConnectionModel(activeNetworkInfo?.typeName!!,false))
                         }
                     }
                 }

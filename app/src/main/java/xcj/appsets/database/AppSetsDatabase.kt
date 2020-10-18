@@ -14,7 +14,7 @@ import xcj.appsets.model.TodayApp
 
 @Database(entities = [TodayApp::class, AppSetsUserReview::class, AppSetsTodayFavoriteApp::class], version = 1, exportSchema = false)
 @TypeConverters(TypeConverter::class)
-public abstract class AppSetsDatabase : RoomDatabase() {
+abstract class AppSetsDatabase : RoomDatabase() {
     abstract fun todayAppDao(): TodayAppDao
     abstract fun appSetsUserReviewDao(): AppSetsUserReviewDao
     abstract fun appSetsUserFavoriteAppsDao():AppSetsUserFavoriteAppsDao

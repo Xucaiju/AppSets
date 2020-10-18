@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -16,8 +17,9 @@ import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import kotlinx.android.synthetic.main.item_small_screenshot.view.*
 import xcj.appsets.R
+import xcj.appsets.ui.fragment.FullScreenScreenShotDialogFragment
 
-class SmallScreenShotAdapter(private val URLs: List<String>, private val context: Context) :
+class SmallScreenShotAdapter(private val URLs: List<String>, private val context: Context, val fragmentManager: FragmentManager) :
     RecyclerView.Adapter<SmallScreenShotAdapter.ViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -45,11 +47,22 @@ class SmallScreenShotAdapter(private val URLs: List<String>, private val context
                     holder.imageView?.setImageDrawable(resource)
                 }
             })
-       /* holder.imageView!!.setOnClickListener { v: View? ->
-            val intent = Intent(context, FullscreenImageActivity::class.java)
-            intent.putExtra(FullscreenImageActivity.INTENT_SCREENSHOT_NUMBER, position)
-            context.startActivity(intent)
-        }*/
+        holder.imageView?.setOnClickListener {
+           /* val fragment:ViewPagerBottomSheetDialogFragment = fragmentManager.findFragmentByTag(fragmentTag.tag) as ViewPagerBottomSheetDialogFragment
+            fragment.dismiss()*/
+            val fullScreenScreenShotDialogFragment =
+                FullScreenScreenShotDialogFragment()
+           /* fullScreenScreenShotDialogFragment.arguments?.let {
+                it.putInt(FullScreenScreenShotDialogFragment.INTENT_SCREENSHOT_NUMBER, position)
+            }*/
+            FullScreenScreenShotDialogFragment.screenShotPosition = position
+            fullScreenScreenShotDialogFragment.show(fragmentManager, fullScreenScreenShotDialogFragment.tag)
+           /* val transaction = fragmentManager.beginTransaction()
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            transaction.add(android.R.id.content, fullScreenScreenShotDialogFragment)
+                .addToBackStack(null)
+                .commit()*/
+        }
 
     }
 

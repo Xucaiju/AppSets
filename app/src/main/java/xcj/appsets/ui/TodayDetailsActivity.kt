@@ -31,11 +31,11 @@ import xcj.appsets.R
 import xcj.appsets.adapter.AppSetsUserReviewAdapter
 import xcj.appsets.adapter.PermissionAdapter
 import xcj.appsets.adapter.SmallScreenShotAdapter
-import xcj.appsets.extendedclass.UserReviewBottomSheetFragment
 import xcj.appsets.model.App
 import xcj.appsets.model.TodayApp
 import xcj.appsets.server.AppSetsServer.Companion.gson
 import xcj.appsets.task.AppDetailTask
+import xcj.appsets.ui.fragment.UserReviewBottomSheetFragment
 import xcj.appsets.util.PreferenceUtil
 import xcj.appsets.util.setCacheCreateTime
 import xcj.appsets.viewmodel.UserReviewViewModel
@@ -84,6 +84,7 @@ class TodayDetailsActivity : BaseActivity() {
         app_details_bottom_bar.setNavigationOnClickListener {
             onBackPressed()
         }
+
         app_details_bottom_fab.setOnClickListener{
             var shareIntent = Intent()
             shareIntent.action = Intent.ACTION_SEND
@@ -137,7 +138,12 @@ class TodayDetailsActivity : BaseActivity() {
             val app = (intent.getSerializableExtra("today_app") as TodayApp)?.also {
 
                 app_details_bottom_bar.menu.findItem(R.id.appbar_write_review).setOnMenuItemClickListener{_->
-                    val dialog = UserReviewBottomSheetFragment(userReviewAdapter, it.id , reviewModel)
+                    val dialog =
+                        UserReviewBottomSheetFragment(
+                            userReviewAdapter,
+                            it.id,
+                            reviewModel
+                        )
                     dialog.show(
                         supportFragmentManager,
                         dialog.tag
@@ -330,8 +336,8 @@ class TodayDetailsActivity : BaseActivity() {
 
                 }
 
-               PreferenceUtil.putString(this@TodayDetailsActivity, FAVORITE_GOOGLE_PLAY,gson.toJson(googlePlayAppFavoriteData))
-                setCacheCreateTime(this@TodayDetailsActivity, Calendar.getInstance().timeInMillis, "Favorite")
+               PreferenceUtil.putString(this, FAVORITE_GOOGLE_PLAY,gson.toJson(googlePlayAppFavoriteData))
+                setCacheCreateTime(this, Calendar.getInstance().timeInMillis, "Favorite")
                 true
             }
             google_app_details_screenshot_recycler.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
@@ -342,7 +348,7 @@ class TodayDetailsActivity : BaseActivity() {
             }
             it.getIconUrl()?.let { appIcon ->
                 Glide
-                    .with(this@TodayDetailsActivity)
+                    .with(this)
                     .asBitmap()
                     .load(appIcon)
                     .placeholder(R.color.colorTransparent)
@@ -353,7 +359,7 @@ class TodayDetailsActivity : BaseActivity() {
             Log.d("ScreenUrls","${it.getScreenshotUrls()}")
             google_app_details_short_description.text  = it.getShortDescription()
             val screenShotAdapter = it.getScreenshotUrls()?.let { it1 ->
-                   SmallScreenShotAdapter(it1, this)
+                   SmallScreenShotAdapter(it1, this, supportFragmentManager)
                }
             screenShotAdapter?.notifyDataSetChanged()
             google_app_details_screenshot_recycler.adapter = screenShotAdapter

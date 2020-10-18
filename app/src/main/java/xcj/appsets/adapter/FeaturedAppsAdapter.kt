@@ -104,7 +104,8 @@ class FeaturedAppsAdapter(
         val dialogFragment = DialogFragment(1, app, lifecycleOwner).apply {
             arguments?.putString("app_package_name", app?.getPackageName())
         }
-        dialogFragment?.show(requireActivity.supportFragmentManager, dialogFragment?.tag)
+       // fragmentTag.tag = dialogFragment?.tag
+        dialogFragment?.show(requireActivity.supportFragmentManager, dialogFragment.tag)
     }
 
     private fun drawBackground(app: App, holder: ViewHolder) {

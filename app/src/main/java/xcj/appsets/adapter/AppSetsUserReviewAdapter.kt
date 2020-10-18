@@ -55,7 +55,7 @@ class AppSetsUserReviewAdapter(var context: Context): RecyclerView.Adapter<AppSe
                 CoroutineScope(Dispatchers.IO).launch {
                     appSetsUserReviewRepository?.apply {
                         val todayAppReviewsCount = getTodayAppReviewsCount()
-                        review.id = todayAppReviewsCount
+                        review.id = todayAppReviewsCount+1
                         addCurrentTodayAppUserReview(review)
                     }
                 }

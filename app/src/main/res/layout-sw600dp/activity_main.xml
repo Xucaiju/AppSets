@@ -85,13 +85,13 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/open_category_action"
                 android:padding="16dp"
-                android:elevation="2dp"
+                android:elevation="4dp"
                 android:background="@drawable/circle_bg_light"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="86dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_category_black_24dp"
+                android:src="@drawable/ic_plus"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
                 android:alpha="0"
-                android:text="下载内容"
+                android:text="@string/download_content"
                 android:translationY="24dp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@+id/open_category_action"

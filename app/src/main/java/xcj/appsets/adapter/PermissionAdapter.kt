@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.item_app_permission.view.*
 import xcj.appsets.R
-import xcj.appsets.ui.fragment.FragmentToday.Companion.getRandomColorStateList
+import xcj.appsets.ui.fragment.FragmentRecommend.Companion.getRandomColorStateList
 
 class PermissionAdapter(val context: Context?, val permissList:MutableSet<String>?): RecyclerView.Adapter<PermissionAdapter.ViewHolder>() {
 

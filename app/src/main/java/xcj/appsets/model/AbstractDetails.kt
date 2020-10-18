@@ -61,7 +61,7 @@ abstract class AbstractDetails(var view: View?, var app: App?) {
     protected fun showPurchaseDialog() {
 
         context?.also {
-            val builder = MaterialAlertDialogBuilder(context)
+            val builder = MaterialAlertDialogBuilder(it)
                 .setTitle(it.getString(R.string.dialog_purchase_title))
                 .setMessage(it.getString(R.string.dialog_purchase_desc))
                 .setPositiveButton(it.getString(R.string.dialog_purchase_positive))
@@ -85,8 +85,19 @@ abstract class AbstractDetails(var view: View?, var app: App?) {
     }
 
     protected fun showDialog(@StringRes titleId: Int, @StringRes messageId: Int) {
-        val builder = MaterialAlertDialogBuilder(context)
-        builder.setTitle(titleId)
+        val backGroundColor: Int? = context?.let { ViewUtil.getStyledAttribute(it, android.R.attr.colorBackground) }
+        val builder = context?.let { MaterialAlertDialogBuilder(it) }?.apply {
+            setTitle(titleId)
+            setMessage(messageId)
+            setPositiveButton(
+                android.R.string.ok
+            ) { dialog: DialogInterface, which: Int -> dialog.dismiss() }
+
+            background = backGroundColor?.let { ColorDrawable(it) }
+            create()
+            show()
+        }
+      /*  builder.
         builder.setMessage(messageId)
         builder.setPositiveButton(
             android.R.string.ok
@@ -95,7 +106,7 @@ abstract class AbstractDetails(var view: View?, var app: App?) {
             context?.let { ViewUtil.getStyledAttribute(it, android.R.attr.colorBackground) }
         builder.setBackground(backGroundColor?.let { ColorDrawable(it) })
         builder.create()
-        builder.show()
+        builder.show()*/
     }
 
     private fun openWebView(URL: String) {

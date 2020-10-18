@@ -30,10 +30,11 @@ data class TodayApp(var id:Int?=0,
                     var appTypes:String?="",
                     var editorNote:String?="",
                     @NonNull
-                    var appPackageName:String
+                    var appPackageName:String,
+                    var devAccount:String?=""
 
 ):Serializable{
     override fun toString(): String {
-        return "TodayApp(id=$id, appDisplayname=$appDisplayname, appDevelopername=$appDevelopername, appRecommendedPictureA=$appRecommendedPictureA, appRecommendedPictureB=$appRecommendedPictureB, appScreenshotA=$appScreenshotA, appScreenshotB=$appScreenshotB, appScreenshotC=$appScreenshotC, appScreenshotD=$appScreenshotD, appScreenshotE=$appScreenshotE, appShortDescription=$appShortDescription, appFullDescription=$appFullDescription, appFeatures=$appFeatures, appPrice=$appPrice, appIcon=$appIcon, showedDate=$showedDate, downloadLink=$downloadLink, favorites=$favorites, appTypes=$appTypes, editorNote=$editorNote, appPackageName=$appPackageName)"
+        return "TodayApp(id=$id, appDisplayname=$appDisplayname, appDevelopername=$appDevelopername, appRecommendedPictureA=$appRecommendedPictureA, appRecommendedPictureB=$appRecommendedPictureB, appScreenshotA=$appScreenshotA, appScreenshotB=$appScreenshotB, appScreenshotC=$appScreenshotC, appScreenshotD=$appScreenshotD, appScreenshotE=$appScreenshotE, appShortDescription=$appShortDescription, appFullDescription=$appFullDescription, appFeatures=$appFeatures, appPrice=$appPrice, appIcon=$appIcon, showedDate=$showedDate, downloadLink=$downloadLink, favorites=$favorites, appTypes=$appTypes, editorNote=$editorNote, appPackageName='$appPackageName', devAccount=$devAccount)"
     }
 }

@@ -9,16 +9,23 @@ import xcj.appsets.util.PreferenceUtil
 object FilterManager {
     fun getFilterPreferences(context: Context?): FilterModel {
         val gson = Gson()
-        val filterModel: FilterModel = gson.fromJson(
+        val filterModel: FilterModel? = gson.fromJson(
             context?.let { PreferenceUtil.getString(it, Constant.PREFERENCE_FILTER_APPS) }, FilterModel::class.java
         )
-        return if (filterModel == null) {
+        return filterModel?: getrFilterModel(context, gson)
+
+       /* return if (filterModel == null) {
             val defaultModel = FilterModel()
             context?.let{PreferenceUtil.putString(it, Constant.PREFERENCE_FILTER_APPS, gson.toJson(defaultModel))}
             defaultModel
-        } else filterModel
+        } else
+            filterModel*/
     }
-
+    private fun getrFilterModel(context: Context?, gson: Gson):FilterModel{
+        val defaultModel = FilterModel()
+        context?.let{PreferenceUtil.putString(it, Constant.PREFERENCE_FILTER_APPS, gson.toJson(defaultModel))}
+        return defaultModel
+    }
     fun saveFilterPreferences(
         context: Context?,
         filterModel: FilterModel?

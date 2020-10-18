@@ -1,8 +1,8 @@
 package xcj.appsets.adapter
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.AsyncTask
@@ -26,7 +26,7 @@ import xcj.appsets.R
 import xcj.appsets.model.TodayApp
 import xcj.appsets.ui.TodayDetailsActivity
 
-class FavoriteAppsAdapter(var context: Context, var activity: Activity): RecyclerView.Adapter<FavoriteAppsAdapter.ViewHolder>() {
+class FavoriteAppsAdapter(var context: Context): RecyclerView.Adapter<FavoriteAppsAdapter.ViewHolder>() {
 
 
     private var favoriteAppsList:MutableList<TodayApp>? = arrayListOf()
@@ -65,21 +65,28 @@ class FavoriteAppsAdapter(var context: Context, var activity: Activity): Recycle
                  holder.appDeveloperName?.text = it.appDevelopername?:context.getString(R.string.action_unknown)
                  holder.appDescription?.text = it.appShortDescription?:context.getString(R.string.action_unknown)
                  holder.iconImage?.let { it1 ->
-                     Glide
-                         .with(context)
-                         .asBitmap()
-                         .load(it.appIcon)
-                         .placeholder(R.color.colorTransparent)
-                         .transition(BitmapTransitionOptions().crossFade(100))
-                         .transform(CenterCrop(), RoundedCorners(250))
-                         .into(it1)
+                     it.appIcon?.let {it2->
+                         Glide
+                             .with(context)
+                             .asBitmap()
+                             .load(it2)
+                             .placeholder(R.color.colorTransparent)
+                             .transition(BitmapTransitionOptions().crossFade(100))
+                             .transform(CenterCrop(), RoundedCorners(250))
+                             .into(it1)
+                     }
+
                  }
                  AsyncTask.execute {
-                     val imgCacheFile = Glide.with(context).asFile().load(it.appIcon).submit().get()
-                     val bitmap = BitmapFactory.decodeFile(imgCacheFile.path)
-                     Palette.from(bitmap).generate {palette->
-                         val color = palette?.getLightVibrantColor(Color.BLUE)
-                         holder.appContentCard?.strokeColor = color!!
+                     it?.appIcon?.let {icon->
+                         val imgCacheFile = Glide.with(context).asFile().load(icon).submit().get()
+                         val bitmap:Bitmap? = BitmapFactory.decodeFile(imgCacheFile?.path)
+                         bitmap?.let {bit->
+                             Palette.from(bit).generate {palette->
+                                 val color = palette?.getLightVibrantColor(Color.BLUE)
+                                 holder.appContentCard?.strokeColor = color!!
+                             }
+                         }
                      }
                  }
              }

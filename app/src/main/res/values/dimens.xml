@@ -31,7 +31,7 @@
     <dimen name="height_searchview">52dp</dimen>
     <dimen name="height_button">52dp</dimen>
     <dimen name="height_nav_header">148dp</dimen>
-    <dimen name="height_search_view">52dp</dimen>
+    <dimen name="height_search_view">48dp</dimen>
     <dimen name="height_search_view_small">48dp</dimen>
     <dimen name="height_search_view_xsmall">42dp</dimen>
 </resources>

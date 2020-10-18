@@ -2,6 +2,7 @@ package xcj.appsets.server
 
 import android.content.Context
 import android.util.Log
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.CoroutineScope
@@ -11,6 +12,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import org.apache.commons.lang3.StringUtils
+import org.jetbrains.annotations.NotNull
 import xcj.appsets.AppSetsApplication
 import xcj.appsets.Constant
 import xcj.appsets.Constant.APPSETS_PRIMARY_SERVER
@@ -36,7 +38,7 @@ class AppSetsServer {
 
         @JvmStatic
         fun signUp(context: Context, userInfo: User): SignResultCode {
-            requestUrl = "${APPSETS_PRIMARY_SERVER}user/${userInfo.account}/${userInfo.password}/su"
+            requestUrl = "${APPSETS_PRIMARY_SERVER}user/${userInfo.account}/${userInfo.password}/${userInfo.email}/su"
             httpClientAdapter = OkHttpClientAdapter(context)
             response = httpClientAdapter?.get(requestUrl)?.let { String(it) }
             return when (response) {
@@ -352,6 +354,104 @@ class AppSetsServer {
                     "failed"
                 }
             }
+        }
+
+        @JvmStatic
+        fun getCaptcha(@NotNull account: String, context: Context):String? {
+            requestUrl = "${APPSETS_PRIMARY_SERVER}user/recoverpassword/$account"
+            httpClientAdapter = OkHttpClientAdapter(context)
+            response = httpClientAdapter?.get(requestUrl)?.let { String(it) }
+            val loginResponse = gson.fromJson<LoginResponseModel>(
+                response,
+                object : TypeToken<LoginResponseModel>() {}.type
+            )
+           return loginResponse?.data?.toString() ?: "INFO_CHECK_YOUR_ACCOUNT"
+        }
+        @JvmStatic
+        fun validateCaptcha(@NotNull account: String, context: Context, @NotNull captcha:String):String {
+            requestUrl = "${APPSETS_PRIMARY_SERVER}user/validatecaptcha/$captcha/$account"
+            httpClientAdapter = OkHttpClientAdapter(context)
+            response = httpClientAdapter?.get(requestUrl)?.let { String(it) }
+            val response = gson.fromJson<LoginResponseModel>(
+                response,
+                object : TypeToken<LoginResponseModel>() {}.type
+            )
+            val pw = response.data as? String
+            return if(pw?.isNotEmpty()!!){
+                pw
+            }else{
+                "INFO_CAPTCHA_ERROR"
+            }
+        }
+        @JvmStatic
+        fun getUserInfoLitebyAccount(userAccount: String?, context: Context):TrendsUserInfo? {
+            requestUrl = "${APPSETS_PRIMARY_SERVER}user/trendsuserinfo/$userAccount"
+            httpClientAdapter = OkHttpClientAdapter(context)
+            response = httpClientAdapter?.get(requestUrl)?.let {
+                String(it)
+            }
+            val userLiteInfo = gson.fromJson<TrendsUserInfo>(
+                response,
+                object : TypeToken<TrendsUserInfo>() {}.type
+            )
+            Log.d("UserLiteInfo", userLiteInfo.toString())
+            return userLiteInfo
+        }
+        @JvmStatic
+        fun getUserTrendContent(userAccount: String?, context: Context):List<UserTrends>? {
+            requestUrl = "${APPSETS_PRIMARY_SERVER}user/usertrendscontentlist/$userAccount"
+            httpClientAdapter = OkHttpClientAdapter(context)
+            response = httpClientAdapter?.get(requestUrl)?.let {
+                String(it)
+            }
+            val aGson = Gson()
+            val userTrendsList = aGson.fromJson<List<UserTrends>>(
+                response,
+                object : TypeToken<List<UserTrends>>() {}.type
+            )
+            userTrendsList?.let{it1->
+                it1.forEach {
+                    Log.d("UserTrends", it.toString())
+                }
+            }
+            return userTrendsList
+        }
+        @JvmStatic
+        fun getUserNotifications(userAccount: String?, context: Context):List<UserNotification>?{
+            requestUrl = "${APPSETS_PRIMARY_SERVER}user/usernotifications/$userAccount"
+            httpClientAdapter = OkHttpClientAdapter(context)
+            response = httpClientAdapter?.get(requestUrl)?.let {
+                String(it)
+            }
+            val aGson = Gson()
+            val userNotificationList = aGson.fromJson<List<UserNotification>>(
+                response,
+                object : TypeToken<List<UserNotification>>() {}.type
+            )
+            userNotificationList?.let { it1->
+                it1.forEach {
+                Log.d("UserNotification", it.toString())
+            }
+            }
+            return userNotificationList
+        }
+        @JvmStatic
+        fun getUserDevApps(userAccount:String?, context: Context):List<TodayApp>?{
+            requestUrl = "${APPSETS_PRIMARY_SERVER}user/devapps/$userAccount"
+            httpClientAdapter = OkHttpClientAdapter(context)
+            response = httpClientAdapter?.get(requestUrl)?.let {
+                String(it)
+            }
+            val userDevAppList = gson.fromJson<List<TodayApp>>(
+                response,
+                object : TypeToken<List<TodayApp>>() {}.type
+            )
+            userDevAppList?.let {it1->
+                it1.forEach {
+                    Log.d("userDevApp", it.toString())
+                }
+            }
+            return userDevAppList
         }
     }
 }

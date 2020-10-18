@@ -174,4 +174,81 @@
         <string name = "choose_a_img"> wählen Sie </string>
         <string name = "user_nickname_placeholder"> Benutzername: </string>
         <string name = "modify"> Ändern </string>
+
+
+
+    <string name = "choose_an_image"> Wählen Sie ein Bild </string>
+    <string name = "cant_be_empty"> Hier darf nicht leer sein! </string>
+    <string name = "updating"> Aktualisieren ... </string>
+    <string name = "please_rechoose_image"> Bitte wählen Sie </string> erneut aus
+    <string name = "open_appname"> Öffnen Sie% s </string>
+    <string name = "successful"> Erfolgreich </string>
+    <string name = "please_enjoy"> Bitte genießen Sie </string>
+    <string name = "purchasing"> Einkauf </string>
+    <string name = "buy_via_appsets"> Kauf über AppSets </string>
+    <string name = "purchase_price"> Preis </string>
+    <string name = "action_confirm_text"> Ok </string>
+    <string name = "purchase_item"> Artikel kaufen </string>
+    <string name = "payment_method"> Zahlungsmethode </string>
+    <string name = "notification_channel_appsets_download"> AppSets Download Notification </string>
+    <string name = "title_all_apps"> Alle Apps </string>
+    <string name = "category_all"> "Alle Kategorien" </string>
+    <string name = "category_family"> "Family" </string>
+    <string name = "category_games"> "Spiele" </string>
+    <string name = "download_progress"> Herunterladen </string>
+    <string name = "download_paused"> Angehalten </string>
+    <string name = "download_canceled"> Abgebrochen </string>
+    <string name = "details_install"> Installieren Sie </string>
+    <string name = "details_installing"> </string> installieren
+    <string name = "installer_status_ongoing"> </string> installieren
+    <string name = "action_resume"> Fortsetzen </string>
+    <string name = "action_cancel"> Abbrechen </string>
+    <string name = "action_pause"> Pause </string>
+    <string name = "download_queued"> Queued </string>
+    <string name = "download_failed"> Fehlgeschlagen </string>
+    <string name = "download_completed"> Heruntergeladen </string>
+    <string name = "download_extraction"> Extrahieren Sie die Spielressource und warten Sie auf den Abschluss </string>
+    <string name = "download_extraction_completed"> Extraktion der Spielressourcen abgeschlossen </string>
+    <string name = "download_extraction_failed"> Das Extrahieren von Spielressourcen ist fehlgeschlagen </string>
+    <string name = "download_resume"> Fortsetzen </string>
+    <string name = "rating_from_google_play"> Bewertung von Google </string>
+    <string name = "rating_overview"> Bewertungsübersicht </string>
+    <string name = "details_purchase"> Kauf </string>
+    <string name = "forget_password"> Passwort vergessen? </string>
+    <string name = "forget_account"> Konto vergessen? </string>
+    <string name = "your_account"> Ihr Konto </string>
+    <string name = "category"> Kategorie </string>
+
+
+
+    <string name = "recover_password"> Passwort abrufen </string>
+    <string name = "input_captcha"> Captcha </string>
+    <string name = "user_email"> E-Mail </string>
+    <string name = "please_input_current_account"> Bitte geben Sie das richtige Konto ein! </string>
+    <string name = "the_password_cant_empty"> Das Passwort darf nicht leer sein! </string>
+    <string name = "passwords_are_inconsistent"> Passwörter sind inkonsistent! </string>
+    <string name = "please_input_your_email"> Bitte geben Sie Ihre E-Mail-Adresse ein! </string>
+    <string name = "registration_success"> Registrierungserfolg! </string>
+    <string name = "registration_failed"> Registrierung fehlgeschlagen! </string>
+    <string name = "server_exception"> Serverausnahme </string>
+    <string name = "update_my_review"> Aktualisiere meine Bewertung </string>
+    <string name = "failed_to_build_google_play_api"> Die Erstellung der GooglePlay-API ist fehlgeschlagen! </string>
+    <string name = "please_check_your_account_or_password"> Bitte überprüfen Sie Ihr Konto oder Passwort! </string>
+    <string name = "please_input_password"> Bitte geben Sie das Passwort </string> ein
+    <string name = "please_input_valid_password"> Bitte geben Sie ein gültiges Passwort ein </string>
+    <string name = "payment_completed"> Zahlung abgeschlossen </string>
+    <string name = "download_content"> Inhalt herunterladen </string>
+    <string name = "action_filter_gsf_dependent_apps"> GSF-abhängig </string>
+    <string name = "action_filter_paid_apps"> Bezahlt </string>
+    <string name = "action_filter_apps_with_ads"> Apps mit Anzeigen </string>
+    <string name = "action_filter_all"> Alle </string>
+    <string name = "rating"> Bewertung </string>
+    <string name = "download_times"> Downloadzeiten </string>
+    <string name = "others"> andere </string>
+    <string name = "post_trends"> Trends veröffentlichen </string>
+    <string name = "manager"> manager </string>
+    <string name = "trends"> Trends </string>
+    <string name = "purchased_apps"> gekaufte Apps </string>
+    <string name = "notifications"> Benachrichtigungen </string>
+    <string name = "mine_dev_apps"> meine Anwendungen </string>
 </resources>

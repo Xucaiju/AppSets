@@ -47,6 +47,18 @@
             app:layout_constraintStart_toStartOf="@+id/divier"
             app:layout_constraintTop_toBottomOf="@+id/divier"
             tools:text="Google Play" />
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/share"
+            app:chipStrokeWidth="1.5dp"
+            app:chipBackgroundColor="@color/colorTransparent"
+            app:chipIcon="@drawable/ic_near_me_24px"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/app_details_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/app_details_icon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

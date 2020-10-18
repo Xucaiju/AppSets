@@ -17,15 +17,19 @@ class InstallerService:Service() {
         val status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -1)
         val packageName = intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME)
         //Send broadcast for the installation status of the package
-        sendStatusBroadcast(status, packageName)
+        if (packageName != null) {
+            sendStatusBroadcast(status, packageName)
+        }
         //Launch user confirmation activity
         if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
             val confirmationIntent = intent.getParcelableExtra<Intent>(Intent.EXTRA_INTENT)
-            confirmationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            confirmationIntent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             try {
                 startActivity(confirmationIntent)
             } catch (e: Exception) {
-                sendStatusBroadcast(PackageInstaller.STATUS_FAILURE, packageName)
+                if (packageName != null) {
+                    sendStatusBroadcast(PackageInstaller.STATUS_FAILURE, packageName)
+                }
             }
         }
         stopSelf()

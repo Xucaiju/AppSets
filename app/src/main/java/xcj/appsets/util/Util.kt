@@ -137,6 +137,7 @@ fun setCacheCreateTime(
         "FirebaseTokenGenerateTime"->{
             PreferenceUtil.putString(context, Constant.PREFERENCE_CACHE_DATE_FIRE_BASE_TOKEN_GENERATE_TIME, dateInMillis.toString())
         }
+
     }
 
 }

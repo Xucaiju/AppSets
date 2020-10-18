@@ -14,8 +14,8 @@ import xcj.appsets.task.CategoryListTask
 
 class CategoryViewModel(application: Application) : AndroidViewModel(application) {
     private val disposable = CompositeDisposable()
-    private val api: GooglePlayAPI?
-    private val categoryManager: CategoryManager
+    private val api: GooglePlayAPI? = AppSetsApplication.api
+    private val categoryManager: CategoryManager = CategoryManager(application)
     val fetchCompleted = MutableLiveData<Boolean>()
 
     fun fetchCategories() {
@@ -29,7 +29,6 @@ class CategoryViewModel(application: Application) : AndroidViewModel(application
         get() {
             disposable.add(
                 Observable.fromCallable {
-
                       api?.let { CategoryListTask(getApplication(), it).result }
 
                 }
@@ -48,8 +47,4 @@ class CategoryViewModel(application: Application) : AndroidViewModel(application
         super.onCleared()
     }
 
-    init {
-        api = AppSetsApplication.api
-        categoryManager = CategoryManager(application)
-    }
 }

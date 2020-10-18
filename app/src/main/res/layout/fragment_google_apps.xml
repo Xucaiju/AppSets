@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.FragmentGoogleApps">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/homeAppsWhenNotLoginToGooglePlay"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/homeAppsNestedScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fadeScrollbars="true"
+        android:paddingTop="@dimen/padding_top_large"
+        android:paddingBottom="@dimen/padding_top"
+        android:scrollbars="vertical"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small">
+
+                <com.skydoves.androidveil.VeilLayout
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:id="@+id/veilLayout_top_apps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="62dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:veilLayout_baseAlpha="0.6"
+                    app:veilLayout_baseColor="@android:color/darker_gray"
+                    app:veilLayout_dropOff="0.5"
+                    app:veilLayout_highlightAlpha="1.0"
+                    app:veilLayout_highlightColor="@color/colorGoogleLightGreen"
+                    app:veilLayout_radius="6dp"
+                    app:veilLayout_shimmerEnable="true"
+                    app:veilLayout_veiled="true"
+                    tools:background="@color/colorGoogleLightYellow">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/top_apps_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:maxLines="1"
+                        android:text="@string/cat_top_apps"
+                        android:textAppearance="@style/AppSets.TextAppearance.Header"
+                        android:textStyle="bold" />
+                </com.skydoves.androidveil.VeilLayout>
+
+
+                <com.skydoves.androidveil.VeilRecyclerFrameView
+                    tools:layout_height="130dp"
+                    android:id="@+id/recycler_top_apps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/margin_normal"
+                    android:paddingEnd="@dimen/margin_normal"
+                    android:paddingTop="@dimen/margin_large"
+                    android:splitMotionEvents="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/veilLayout_top_apps"
+                    app:veilFrame_baseAlpha="0.6"
+                    app:veilFrame_baseColor="@android:color/darker_gray"
+                    app:veilFrame_highlightAlpha="1.0"
+                    app:veilFrame_highlightColor="@color/colorGoogleLightGreen"
+                    app:veilFrame_layout="@layout/item_featured"
+                    app:veilFrame_radius="8dp"
+                    app:veilFrame_shimmerEnable="true"
+                    app:veilFrame_veiled="true"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_featured" />
+
+                <com.skydoves.androidveil.VeilLayout
+                    android:id="@+id/veilLayout_top_apps_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/veilLayout_top_apps"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/veilLayout_top_apps"
+                    app:veilLayout_baseAlpha="0.6"
+                    app:veilLayout_baseColor="@android:color/darker_gray"
+                    app:veilLayout_dropOff="0.5"
+                    app:veilLayout_highlightAlpha="1.0"
+                    app:veilLayout_highlightColor="@color/colorGoogleLightGreen"
+                    app:veilLayout_radius="12dp"
+                    app:veilLayout_shimmerEnable="true"
+                    app:veilLayout_veiled="true"
+                    tools:background="@color/colorGoogleLightYellow">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btn_top_apps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/action_more"
+                        app:chipBackgroundColor="@color/colorTransparent"
+                        app:chipStrokeColor="?android:attr/colorAccent"
+                        app:chipStrokeWidth="1.5dp" />
+                </com.skydoves.androidveil.VeilLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small">
+
+                <com.skydoves.androidveil.VeilLayout
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:id="@+id/veilLayout_top_games"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="62dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:veilLayout_baseAlpha="0.6"
+                    app:veilLayout_baseColor="@android:color/darker_gray"
+                    app:veilLayout_dropOff="0.5"
+                    app:veilLayout_highlightAlpha="1.0"
+                    app:veilLayout_highlightColor="@color/colorGoogleLightGreen"
+                    app:veilLayout_radius="6dp"
+                    app:veilLayout_shimmerEnable="true"
+                    app:veilLayout_veiled="true"
+                    tools:background="@color/colorGoogleLightYellow">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/top_games_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:maxLines="1"
+                        android:text="@string/cat_top_games"
+                        android:textAppearance="@style/AppSets.TextAppearance.Header"
+                        android:textStyle="bold" />
+                </com.skydoves.androidveil.VeilLayout>
+
+
+                <com.skydoves.androidveil.VeilRecyclerFrameView
+                    tools:layout_height="130dp"
+                    android:id="@+id/recycler_top_games"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/margin_normal"
+                    android:paddingEnd="@dimen/margin_normal"
+                    android:paddingTop="@dimen/margin_large"
+                    android:splitMotionEvents="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/veilLayout_top_games"
+                    app:veilFrame_baseAlpha="0.6"
+                    app:veilFrame_baseColor="@android:color/darker_gray"
+                    app:veilFrame_highlightAlpha="1.0"
+                    app:veilFrame_highlightColor="@color/colorGoogleLightGreen"
+                    app:veilFrame_layout="@layout/item_featured"
+                    app:veilFrame_radius="8dp"
+                    app:veilFrame_shimmerEnable="true"
+                    app:veilFrame_veiled="true"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_featured" />
+
+                <com.skydoves.androidveil.VeilLayout
+                    android:id="@+id/veilLayout_top_games_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/veilLayout_top_games"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/veilLayout_top_games"
+                    app:veilLayout_baseAlpha="0.6"
+                    app:veilLayout_baseColor="@android:color/darker_gray"
+                    app:veilLayout_dropOff="0.5"
+                    app:veilLayout_highlightAlpha="1.0"
+                    app:veilLayout_highlightColor="@color/colorGoogleLightGreen"
+                    app:veilLayout_radius="12dp"
+                    app:veilLayout_shimmerEnable="true"
+                    app:veilLayout_veiled="true"
+                    tools:background="@color/colorGoogleLightYellow">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btn_top_games"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/action_more"
+                        app:chipBackgroundColor="@color/colorTransparent"
+                        app:chipStrokeColor="?android:attr/colorAccent"
+                        app:chipStrokeWidth="1.5dp" />
+                </com.skydoves.androidveil.VeilLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small">
+
+                <com.skydoves.androidveil.VeilLayout
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:id="@+id/veilLayout_top_family"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="62dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:veilLayout_baseAlpha="0.6"
+                    app:veilLayout_baseColor="@android:color/darker_gray"
+                    app:veilLayout_dropOff="0.5"
+                    app:veilLayout_highlightAlpha="1.0"
+                    app:veilLayout_highlightColor="@color/colorGoogleLightGreen"
+                    app:veilLayout_radius="6dp"
+                    app:veilLayout_shimmerEnable="true"
+                    app:veilLayout_veiled="true"
+                    tools:background="@color/colorGoogleLightYellow">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/top_family_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:maxLines="1"
+                        android:text="@string/cat_top_family"
+                        android:textAppearance="@style/AppSets.TextAppearance.Header"
+                        android:textStyle="bold" />
+                </com.skydoves.androidveil.VeilLayout>
+
+
+                <com.skydoves.androidveil.VeilRecyclerFrameView
+                    tools:layout_height="130dp"
+                    android:id="@+id/recycler_top_family"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/margin_normal"
+                    android:paddingEnd="@dimen/margin_normal"
+                    android:paddingTop="@dimen/margin_large"
+                    android:splitMotionEvents="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/veilLayout_top_family"
+                    app:veilFrame_baseAlpha="0.6"
+                    app:veilFrame_baseColor="@android:color/darker_gray"
+                    app:veilFrame_highlightAlpha="1.0"
+                    app:veilFrame_highlightColor="@color/colorGoogleLightGreen"
+                    app:veilFrame_layout="@layout/item_featured"
+                    app:veilFrame_radius="8dp"
+                    app:veilFrame_shimmerEnable="true"
+                    app:veilFrame_veiled="true"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_featured" />
+
+                <com.skydoves.androidveil.VeilLayout
+                    android:id="@+id/veilLayout_top_family_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/veilLayout_top_family"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/veilLayout_top_family"
+                    app:veilLayout_baseAlpha="0.6"
+                    app:veilLayout_baseColor="@android:color/darker_gray"
+                    app:veilLayout_dropOff="0.5"
+                    app:veilLayout_highlightAlpha="1.0"
+                    app:veilLayout_highlightColor="@color/colorGoogleLightGreen"
+                    app:veilLayout_radius="12dp"
+                    app:veilLayout_shimmerEnable="true"
+                    app:veilLayout_veiled="true"
+                    tools:background="@color/colorGoogleLightYellow">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btn_top_family"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/action_more"
+                        app:chipBackgroundColor="@color/colorTransparent"
+                        app:chipStrokeColor="?android:attr/colorAccent"
+                        app:chipStrokeWidth="1.5dp" />
+                </com.skydoves.androidveil.VeilLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

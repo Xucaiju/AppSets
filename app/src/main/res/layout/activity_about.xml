@@ -9,75 +9,79 @@
     android:transitionName="ABOUT"
     tools:context=".ui.AboutActivity">
 
-    <TextView
-        android:id="@+id/about_activity_textView"
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        android:text="🍰AppSets"
-        android:textSize="36sp"
-        android:textStyle="bold"
+        <xcj.appsets.view.AppSetsLogo
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_marginEnd="8dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/about_activity_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="AppSets"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="?android:textColorPrimary" />
+    </GridLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/about_activit_about_feild"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="?android:attr/colorBackground"
+        android:text="版本: 2020-09-20-dev"
+        android:textAllCaps="false"
+        android:textColor="?android:attr/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/about_activit_about_feild"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="0dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="32dp"
-
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="#706ADDA5"
-        android:text="版本: 0.1"
-        android:textAllCaps="false"
-        android:textColor="?android:attr/textColorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/about_activity_textView"
-        app:strokeWidth="0dp" />
-
-    <com.google.android.material.button.MaterialButton
         android:id="@+id/about_activit_changelog_feild"
-
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:backgroundTint="?android:attr/colorBackground"
         android:layout_width="0dp"
         android:layout_height="68dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="#70FF7F74"
         android:text="更新日志"
         android:textAllCaps="false"
         android:textColor="?android:attr/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/about_activit_about_feild"
-        app:strokeWidth="0dp" />
+        app:layout_constraintTop_toBottomOf="@+id/about_activit_about_feild" />
 
-<!--    <com.google.android.material.button.MaterialButton
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+    <com.google.android.material.button.MaterialButton
         android:layout_width="0dp"
         android:layout_height="68dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="#7087B4FF"
         android:text="第三方依赖库"
         android:textAllCaps="false"
+        android:backgroundTint="?android:attr/colorBackground"
         android:textColor="?android:attr/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/about_activit_changelog_feild"
-        app:strokeColor="@color/colorGoogleLightBlue"
-        app:strokeWidth="1.5dp" />-->
+         />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.12" />
+        app:layout_constraintGuide_percent="0.2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

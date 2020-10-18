@@ -15,43 +15,67 @@
         android:layout_marginTop="@dimen/margin_xlarge"
         android:onClick="toAbout"
         android:text="@string/about"
-        app:chipBackgroundColor="#6DD8A5"
+        app:chipStrokeColor="#6DD8A5"
+        app:chipBackgroundColor="@color/colorTransparent"
+        app:chipStrokeWidth="1.5dp"
+        android:elevation="0dp"
         app:chipIcon="@drawable/ic_help_outline_black_24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.chip.Chip
+        android:id="@+id/chip4"
         style="@style/Widget.MaterialComponents.Chip.Action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_normal"
+        android:elevation="0dp"
         android:onClick="toSignup"
         android:text="@string/signup_text"
-        app:chipBackgroundColor="#FFEB3B"
+        app:chipBackgroundColor="@color/colorTransparent"
         app:chipIcon="@drawable/ic_face_black_24dp"
+        app:chipStrokeColor="#FFEB3B"
+        app:chipStrokeWidth="1.5dp"
         app:layout_constraintBottom_toBottomOf="@+id/chip_about"
         app:layout_constraintStart_toEndOf="@id/chip_about"
         app:layout_constraintTop_toTopOf="@+id/chip_about" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView"
+    <GridLayout
+        android:layout_marginTop="24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sign_to_appsets"
-        android:textColor="#1E1E1E"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guideline9"
-        app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chip4">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_to_appsets"
+            android:textColor="#1E1E1E"
+            android:layout_marginStart="8dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
+
+    </GridLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/loginTextInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_height="58dp"
+        android:layout_height="wrap_content"
         android:hint="@string/account"
         app:endIconMode="clear_text"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/guideline12">
@@ -67,10 +91,11 @@
         android:id="@+id/loginTextInputLayout2"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="@dimen/margin_large"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
         android:hint="@string/password"
         app:endIconMode="password_toggle"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/loginTextInputLayout">
@@ -125,21 +150,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.38" />
+        app:layout_constraintGuide_percent="0.33" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.18" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.13" />
+        app:layout_constraintGuide_percent="0.12" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
@@ -171,4 +191,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <xcj.appsets.view.AppSetsLogo
+        android:id="@+id/logo"
+        tools:visibility="gone"
+        android:layout_width="256dp"
+        android:layout_height="256dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

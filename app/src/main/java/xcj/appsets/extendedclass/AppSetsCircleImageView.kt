@@ -318,7 +318,7 @@ class AppSetsCircleImageView: AppCompatImageView {
         mCircleBackgroundPaint.color = mCircleBackgroundColor
         mBitmapHeight = mBitmap!!.height
         mBitmapWidth = mBitmap!!.width
-        mBorderRect.set(calculateBounds())
+        calculateBounds()?.let { mBorderRect.set(it) }
         mBorderRadius = min(
             (mBorderRect.height() - mBorderWidth) / 2.0f,
             (mBorderRect.width() - mBorderWidth) / 2.0f

@@ -69,20 +69,25 @@ import xcj.appsets.model.TodayApp
 import xcj.appsets.notification.GoogleAppDownloadNotification
 import xcj.appsets.task.DeliveryDataTask
 import xcj.appsets.task.GZipTask
-import xcj.appsets.util.*
 import xcj.appsets.util.ContextUtil.runOnUiThread
+import xcj.appsets.util.PackageUtil
+import xcj.appsets.util.PathUtil
+import xcj.appsets.util.shouldAutoInstallApk
+import xcj.appsets.util.validateApi
 import xcj.appsets.viewmodel.AppDetailsViewModel
 import java.io.File
 import java.util.*
 
 
 class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
-    companion object{
-        var eventType:Event.SubType? = null
+    companion object {
+        var eventType: Event.SubType? = null
+        var googleApp: App? = null
     }
-    private var googleAppHashCode:Int=0
-    lateinit var googleApp:App
-    lateinit var appsetsApp:TodayApp
+
+    private var googleAppHashCode: Int = 0
+
+    lateinit var appsetsApp: TodayApp
     private lateinit var screenshotRecyclerView: RecyclerView
     private lateinit var appDetailsIcon: AppCompatImageView
     private lateinit var appDisplayName: MaterialTextView
@@ -96,7 +101,7 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
     private lateinit var reviewChart: RadarChart
     private var fetch: Fetch? = null
     private var fetchListener: FetchListener? = null
-    private var progress:Int = 0
+    private var progress: Int = 0
     private val autoDisposable = AutoDisposable()
     private var appDetailsViewModel: AppDetailsViewModel? = null
     private var fragmentPosition: Int? = null
@@ -104,12 +109,12 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
     private var mviewLifecyclerOwner: LifecycleOwner? = null
     lateinit var progressBar: ContentLoadingProgressBar
     lateinit var btnCancel: AppCompatImageButton
-    lateinit var progressStatus:MaterialTextView
-    lateinit var progressTxt:MaterialTextView
-    lateinit var actionsButtonLayout :LinearLayout
-    lateinit var progressLayout :LinearLayout
-    lateinit var btnPositive:MaterialButton
-    lateinit var btnNegative:MaterialButton
+    lateinit var progressStatus: MaterialTextView
+    lateinit var progressTxt: MaterialTextView
+    lateinit var actionsButtonLayout: LinearLayout
+    lateinit var progressLayout: LinearLayout
+    lateinit var btnPositive: MaterialButton
+    lateinit var btnNegative: MaterialButton
     private var notification: GoogleAppDownloadNotification? = null
     private var isPaused = false
     private val globalInstallReceiver: BroadcastReceiver = object : BroadcastReceiver() {
@@ -121,7 +126,7 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
             ) {
                 return
             }
-            ContextUtil.runOnUiThread(Runnable { })//drawButtons()
+            runOnUiThread(Runnable { })//drawButtons()
         }
     }
 
@@ -130,7 +135,6 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
         this.theApp = theApp
         this.mviewLifecyclerOwner = mviewLifecycleOwner
     }
-
     override fun onStart() {
         super.onStart()
 /*        val dm = DisplayMetrics()
@@ -143,18 +147,15 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
     }
 
 
-
-
     @SuppressLint("RestrictedApi", "ResourceType")
     override fun setupDialog(dialog: Dialog, style: Int) {
         super.setupDialog(dialog, style)
-        val contentView:View? = View.inflate(requireContext(), R.layout.dialog_bottom_sheet, null)
+        val contentView: View? = View.inflate(requireContext(), R.layout.dialog_bottom_sheet, null)
         val dm = DisplayMetrics()
 
         activity?.windowManager?.defaultDisplay?.getMetrics(dm)
         contentView?.let {
             dialog.setContentView(it)
-
             screenshotRecyclerView = it.findViewById(R.id.bottom_sheet_screenshot_recycler)
             appDetailsIcon = it.findViewById(R.id.app_details_icon)
             appDisplayName = it.findViewById(R.id.app_details_display_name)
@@ -188,7 +189,9 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
             isRotationEnabled = false
             animateXY(1400, 1400, Easing.EaseInOutQuad)
             xAxis.apply {
-                textColor = requireActivity().theme.obtainStyledAttributes(intArrayOf(android.R.attr.textColorPrimary)).getColor(0,Color.BLACK)
+                textColor =
+                    requireActivity().theme.obtainStyledAttributes(intArrayOf(android.R.attr.textColorPrimary))
+                        .getColor(0, Color.BLACK)
                 textSize = 16f
                 yOffset = 0f
                 xOffset = 0f
@@ -233,90 +236,49 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
 
             }
             1 -> {
-             /*   ConnectionLiveData(requireContext()).observe(requireActivity()) {
-                    if(it.isConnected){
-                        AppSetsApplication.rxNotify(Event(Event.SubType.NETWORK_AVAILABLE))
-                    }else{
-                        AppSetsApplication.rxNotify(Event(Event.SubType.NETWORK_UNAVAILABLE))
+                /*   ConnectionLiveData(requireContext()).observe(requireActivity()) {
+                       if(it.isConnected){
+                           AppSetsApplication.rxNotify(Event(Event.SubType.NETWORK_AVAILABLE))
+                       }else{
+                           AppSetsApplication.rxNotify(Event(Event.SubType.NETWORK_UNAVAILABLE))
 
-                    }
-                }*/
-               // validateApi(requireContext())
+                       }
+                   }*/
+                // validateApi(requireContext())
                 googleApp = (theApp as App)
                 drawBasic(googleApp)
                 val packageName = googleApp?.getPackageName()
-               /* val disposable: Disposable? = AppSetsApplication.getRxBus()?.getBus()?.subscribe( { event ->
-                        Log.d("Event Type Is", "${event?.getSubType()}")
-                        when (event?.getSubType()) {
-                            Event.SubType.INSTALLED, Event.SubType.UNINSTALLED -> { }// drawButtons() Nothing
-                            Event.SubType.API_SUCCESS -> appDetailsViewModel?.fetchAppDetails(packageName)
-                            else -> { }
-                        }
-                    }){
-                        Log.d("Throwable","${it}")
-                    }
-                autoDisposable.add(disposable)*/
-
-               Observable.just(eventType).subscribeOn(Schedulers.io()).observeOn(Schedulers.io()).subscribe({
-                   it?.let {event->
-                       if(event == Event.SubType.API_SUCCESS){
-                           appDetailsViewModel?.fetchAppDetails(packageName)
-                       }
-                   }
-               }){
-
-               }?.let {
-                   autoDisposable.add(it)
-               }
-
-     /*           AppSetsApplication.getRxBus()?.getBus()?.subscribe { event ->
-                            when (event?.getSubType()) {
-                                Event.SubType.NETWORK_AVAILABLE -> {
-                            //Log.d("Event类型", "NETWORK_AVAILABLE")
-                            if (ApiValidateService.isServiceRunning) {
-                               // Log.d("API验证服务状态", "正在运行")
-                                requireActivity().stopService(Intent(requireContext(), ApiValidateService::class.java))
+                /* val disposable: Disposable? = AppSetsApplication.getRxBus()?.getBus()?.subscribe( { event ->
+                         Log.d("Event Type Is", "${event?.getSubType()}")
+                         when (event?.getSubType()) {
+                             Event.SubType.INSTALLED, Event.SubType.UNINSTALLED -> { }// drawButtons() Nothing
+                             Event.SubType.API_SUCCESS -> appDetailsViewModel?.fetchAppDetails(packageName)
+                             else -> { }
+                         }
+                     }){
+                         Log.d("Throwable","${it}")
+                     }
+                 autoDisposable.add(disposable)*/
+                eventType?.let {
+                    Observable.just(eventType).subscribeOn(Schedulers.io()).observeOn(Schedulers.io())
+                        .subscribe({
+                            it?.let { event ->
+                                if (event == Event.SubType.API_SUCCESS) {
+                                    appDetailsViewModel?.fetchAppDetails(packageName)
+                                }
                             }
+                        }) {
 
-
-                            if (Accountant.isLoggedIn(requireContext())!!) {
-                               // Log.d("GoogleAPI登录状态", "已登录")
-                                validateApi(requireContext())
-                            }
-
+                        }?.let {
+                            autoDisposable.add(it)
                         }
-
-                        Event.SubType.NETWORK_UNAVAILABLE -> {
-
-                        }
-
-                        Event.SubType.API_SUCCESS -> {
-                            appDetailsViewModel?.fetchAppDetails(packageName)
-
-                        }
-
-
-                        Event.SubType.API_FAILED, Event.SubType.API_ERROR -> {
-                        }
-
-                        else -> {
-                            // do
-                        }
-                    }
-                }.let {
-                    autoDisposable.add(it)
-                }*/
-
-
-                //appDetailsViewModel?.fetchAppDetails(packageName)
+                }
                 mviewLifecyclerOwner?.let { lifecycleOwner ->
                     appDetailsViewModel?.appDetails?.observe(lifecycleOwner) {
-
                         if (it != null) {
                             googleApp = it
-                            googleAppHashCode = googleApp.getPackageName().hashCode()
+                            googleAppHashCode = googleApp?.getPackageName().hashCode()
                         }
-
                         draw(googleApp, contentView)
                     }
                 }
@@ -366,9 +328,10 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
     }
 
     private fun draw(app: App?, fragmentView: View?) {
+        val supportFragmentManager = requireActivity().supportFragmentManager
         val disposable = Observable.just(
             // GeneralDetails(this, com.aurora.store.ui.details.DetailsActivity.app),
-            Screenshot(fragmentView, app)
+            Screenshot(fragmentView, app, supportFragmentManager)
             /* Reviews(this, com.aurora.store.ui.details.DetailsActivity.app),
              ExodusPrivacy(this, com.aurora.store.ui.details.DetailsActivity.app),
              Video(this, com.aurora.store.ui.details.DetailsActivity.app),
@@ -388,10 +351,10 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
         autoDisposable.add(disposable)
 
         app?.apply {
-            if(!getIsFree()!!){
+            if (!getIsFree()!!) {
                 checkPurchased(this)
             }
-            if(getIsInstalled()!!){
+            if (getIsInstalled()!!) {
                 runOrUpdate(this)
             }
 
@@ -451,33 +414,40 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
 
     }
 
-    private fun checkPurchased(app:App) {
+    private fun checkPurchased(app: App) {
         autoDisposable.add(
-            Observable.fromCallable{
+            Observable.fromCallable {
                 DeliveryDataTask(context).getDeliveryData(app)
             }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                        btnPositive.setText(R.string.details_install)
-                    }
-                ){
+                    btnPositive.setText(R.string.details_install)
+                }
+                ) {
                     btnPositive.setText(
                         R.string.details_purchase
                     )
                 }
         )
     }
-    private fun runOrUpdate(app:App) {
+
+    private fun runOrUpdate(app: App) {
         val versionName: String? = app.getVersionName()
         if (TextUtils.isEmpty(versionName)) {
             return
         }
         try {
-            val info: PackageInfo? = requireContext().packageManager?.getPackageInfo(app.getPackageName(), 0)
+            val info: PackageInfo? =
+                requireContext().packageManager?.getPackageInfo(app.getPackageName()!!, 0)
             val currentVersion = info?.versionName
             btnPositive.setText(R.string.details_update)
-            if (info?.longVersionCode == app.getVersionCode()?.toLong() || null == currentVersion) {
+            if (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    info?.longVersionCode == app.getVersionCode()?.toLong() || null == currentVersion
+                } else {
+                    TODO("VERSION.SDK_INT < P")
+                }
+            ) {
                 btnPositive.setText(R.string.details_run)
                 btnPositive.setOnClickListener(openAppListener())
                 btnPositive.visibility = if (PackageUtil.isPackageLaunchable(
@@ -492,7 +462,7 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
                             it1
                         )
                     }
-                }).let {File(it).exists()  }
+                }).let { File(it).exists() }
             ) {
                 btnPositive.setOnClickListener(installAppListener())
                 btnPositive.visibility = View.VISIBLE
@@ -500,6 +470,7 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
         } catch (ignored: PackageManager.NameNotFoundException) {
         }
     }
+
     private fun openAppListener(): View.OnClickListener? {
         btnPositive.setText(R.string.details_run)
         return View.OnClickListener {
@@ -511,15 +482,16 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
             }
         }
     }
+
     private fun getLaunchIntent(): Intent? {
-        var mIntent = googleApp.getPackageName()?.let {
+        var mIntent = googleApp?.getPackageName()?.let {
             requireContext().packageManager.getLaunchIntentForPackage(
                 it
             )
         }
         val isTv = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && isTv()
         if (isTv) {
-            val l = googleApp.getPackageName()?.let {
+            val l = googleApp?.getPackageName()?.let {
                 requireContext().packageManager
                     .getLeanbackLaunchIntentForPackage(it)
             }
@@ -533,6 +505,7 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
         mIntent.addCategory(if (isTv) Intent.CATEGORY_LEANBACK_LAUNCHER else Intent.CATEGORY_LAUNCHER)
         return mIntent
     }
+
     private fun isTv(): Boolean {
         val uiMode = requireContext().resources.configuration.uiMode
         return uiMode and Configuration.UI_MODE_TYPE_MASK == Configuration.UI_MODE_TYPE_TELEVISION
@@ -554,14 +527,14 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
             btnPositive.setText(R.string.details_installing)
             btnPositive.isEnabled = false
             notification.notifyInstalling()
-            AppSetsApplication.getInstaller()?.install(googleApp)
+            googleApp?.let { it1 -> AppSetsApplication.getInstaller()?.install(it1) }
         }
     }
 
-    private fun downloadAppListener():View.OnClickListener{
+    private fun downloadAppListener(): View.OnClickListener {
         return View.OnClickListener {
             Observable.fromCallable {
-                DeliveryDataTask(context).getDeliveryData(googleApp)
+                googleApp?.let { it1 -> DeliveryDataTask(context).getDeliveryData(it1) }
             }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -573,11 +546,19 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
                     runOnUiThread(
                         Runnable {
                             if (it is NotPurchasedException) {
-                                Log.d("%s not purchased", googleApp.getDisplayName())
+                                googleApp?.getDisplayName()?.let { it1 ->
+                                    Log.d("%s not purchased",
+                                        it1
+                                    )
+                                }
                                 //showPurchaseDialog()
                             }
                             if (it is AppNotFoundException) {
-                                Log.d("%s not not found", googleApp.getDisplayName())
+                                googleApp?.getDisplayName()?.let { it1 ->
+                                    Log.d("%s not not found",
+                                        it1
+                                    )
+                                }
                                 /*showDialog(
                                     R.string.dialog_unavailable_title,
                                     R.string.dialog_unavailable_desc
@@ -603,24 +584,36 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
                 }?.let { autoDisposable.add(it) }
         }
     }
+
     private fun initiateDownload(
         deliveryData: AndroidAppDeliveryData
     ) {
-        val request: Request? = buildRequest(context, googleApp, deliveryData.downloadUrl)
-        val splitList: List<Request> = buildSplitRequestList(context, googleApp, deliveryData)
-        val obbList: List<Request> = buildObbRequestList(context, googleApp, deliveryData)
+        val request: Request? = googleApp?.let {
+            buildRequest(
+                context,
+                it, deliveryData.downloadUrl
+            )
+        }
+        val splitList: List<Request>? =
+            googleApp?.let { buildSplitRequestList(context, it, deliveryData) }
+        val obbList: List<Request>? = googleApp?.let {
+            buildObbRequestList(
+                context,
+                it, deliveryData
+            )
+        }
         val requestList: MutableList<Request> = ArrayList<Request>()
         request?.let {
             requestList.add(it)
         }
-        requestList.addAll(splitList)
-        requestList.addAll(obbList)
+        splitList?.let { requestList.addAll(it) }
+        obbList?.let { requestList.addAll(it) }
         fetchListener = getFetchListener()
         fetchListener?.let { fetch?.addListener(it) }
         fetch?.enqueue(
             requestList,
             Func<List<Pair<Request, Error>>> {
-                Log.i("Downloading Splits : %s", googleApp.getPackageName())
+                googleApp?.getPackageName()?.let { it1 -> Log.i("Downloading Splits : %s", it1) }
             }
         ) /*{ updatedRequestList:List<Pair<Request, Error>>->
             for(i in updatedRequestList){
@@ -634,13 +627,21 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
 
         //Add <PackageName,DisplayName> and <PackageName,IconURL> to PseudoMaps
         context?.let {
-            PackageUtil.addToPseudoPackageMap(it, googleApp.getPackageName()?:"", googleApp.getDisplayName()?:"")
-            PackageUtil.addToPseudoURLMap(it, googleApp.getPackageName()?:"", googleApp.getIconUrl()?:"")
+            PackageUtil.addToPseudoPackageMap(
+                it,
+                googleApp?.getPackageName() ?: "",
+                googleApp?.getDisplayName() ?: ""
+            )
+            PackageUtil.addToPseudoURLMap(
+                it,
+                googleApp?.getPackageName() ?: "",
+                googleApp?.getIconUrl() ?: ""
+            )
         }
 
     }
 
-    private fun setData(app:App?) {
+    private fun setData(app: App?) {
         var minStar = 0f
         var maxStar = 0f
         val starList = arrayListOf<Float>()
@@ -688,48 +689,14 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
         }
         reviewChart.yAxis.apply {
             resetAxisMaximum()
-            axisMaximum = maxStar+(maxStar*0.1).toFloat()//app?.getRating()?.getStars(5)?.toFloat()?.plus(666f) ?: 0f
+            axisMaximum =
+                maxStar + (maxStar * 0.1).toFloat()//app?.getRating()?.getStars(5)?.toFloat()?.plus(666f) ?: 0f
 
         }
         reviewChart.data = data
         reviewChart.invalidate()
-        //val fiveStartCount = app?.getRating()?.getStars(5).apply {
-            /* val mul = fiveStartCount?.toFloat()?.plus(999999f)
-        val min = 20f
-        val cnt = 5*/
 
-
-            // fiveStartCount?.toFloat()?.let { entries2.add(RadarEntry(it)) }
-            // NOTE: The order of the entries when being added to the entries array determines their position around the center of
-            // the chart.
-            /*for (i in 0 until cnt) {
-
-            val val2 = (Math.random() * mul).toFloat() + min
-            entries2.add(RadarEntry(val2))
-        }*/
-      /*      var maxStar = 0f
-            var minStar = 0f
-        var temp = 0f
-      for(i in starList.indices){
-          for(j in starList.indices){
-              if(starList[j]>starList[i]){
-                  temp = starList[j]
-                  starList[j] = starList[i]
-                  starList[i] = temp
-              }
-          }
-      }*/
-          /*  if(n.value>maxStar){
-                maxStar = n.value
-            }else{
-                minStar = n.value
-            }*/
-
-
-
-        }
-
-       // }
+    }
 
     private fun setupFetch() {
         context?.let {
@@ -739,7 +706,7 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
 
             fetch?.getFetchGroup(googleAppHashCode, Func { fetchGroup: FetchGroup ->
                 if (fetchGroup.groupDownloadProgress == 100) {
-                    if (!googleApp.getIsInstalled()!! && PathUtil.fileExists(it, googleApp))
+                    if (!googleApp?.getIsInstalled()!! && PathUtil.fileExists(it, googleApp!!))
                         btnPositive.setOnClickListener(installAppListener())
                 } else if (fetchGroup.downloadingDownloads.isNotEmpty()) {
                     switchViews(true)
@@ -753,12 +720,14 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
         }
 
     }
+
     private fun switchViews(showDownloads: Boolean) {
         if (viewSwitcher.currentView === actionsButtonLayout && showDownloads)
             viewSwitcher.showNext()
         else if (viewSwitcher.currentView === progressLayout && !showDownloads)
             viewSwitcher.showPrevious()
     }
+
     private fun getFetchListener(): FetchListener? {
         return object : AbstractFetchGroupListener() {
             override fun onQueued(
@@ -784,9 +753,9 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
                 totalBlocks: Int,
                 fetchGroup: FetchGroup
             ) {
-                if(groupId==googleAppHashCode){
+                if (groupId == googleAppHashCode) {
                     runOnUiThread(Runnable {
-                      progressBar.isIndeterminate = true
+                        progressBar.isIndeterminate = true
                         progressStatus.setText(R.string.download_waiting)
                         switchViews(true)
                     })
@@ -800,9 +769,9 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
             ) {
                 if (groupId == googleAppHashCode) {
                     progress = fetchGroup.groupDownloadProgress
-                            if (progress < 0) progress = 0
+                    if (progress < 0) progress = 0
                     notification?.notifyProgress(progress, 0, googleAppHashCode)
-                    runOnUiThread (Runnable{
+                    runOnUiThread(Runnable {
                         progressStatus.setText(R.string.download_progress)
                         progressBar.setIndeterminate(false)
                     })
@@ -820,7 +789,7 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
                     progress = fetchGroup.groupDownloadProgress
                     if (progress < 0)
                         progress = 0
-                    runOnUiThread (Runnable{
+                    runOnUiThread(Runnable {
                         btnCancel.visibility = View.VISIBLE
                         //Set intermediate to false, just in case xD
                         if (progressBar.isIndeterminate)
@@ -830,9 +799,13 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
                         } else
                             progressBar.progress = progress
                         progressStatus.setText(R.string.download_progress)
-                        progressTxt.text = String.format("%s\\%",progress )
+                        progressTxt.text = String.format("%s\\%", progress)
                     })
-                    notification?.notifyProgress(progress, downloadedBytesPerSecond, googleAppHashCode)
+                    notification?.notifyProgress(
+                        progress,
+                        downloadedBytesPerSecond,
+                        googleAppHashCode
+                    )
                 }
             }
 
@@ -877,11 +850,11 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
                     if (shouldAutoInstallApk(context)) {
                         runOnUiThread(Runnable {
                             btnPositive.setText(R.string.details_installing)
-                            btnPositive.setEnabled(false)
+                            btnPositive.isEnabled = false
                         })
                         notification.notifyInstalling()
                         //Call the installer
-                        AppSetsApplication.getInstaller()?.install(googleApp)
+                        googleApp?.let { AppSetsApplication.getInstaller()?.install(it) }
                     }
                     if (fetchListener != null) {
                         fetchListener?.let {
@@ -893,19 +866,19 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
                 if (groupId == googleAppHashCode && download.progress == 100) {
                     if (FilenameUtils.getExtension(download.file) == "gzip") {
                         autoDisposable.add(
-                            Observable.fromCallable{
-                                    GZipTask(context).extract(File(download.file))
-                                }
+                            Observable.fromCallable {
+                                GZipTask(context).extract(File(download.file))
+                            }
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .doOnSubscribe {
                                     notification?.notifyExtractionProgress()
                                     runOnUiThread(Runnable { btnPositive.isEnabled = false })
                                 }
-                                .doOnTerminate{
-                                    runOnUiThread (Runnable{ btnPositive.isEnabled = true })
+                                .doOnTerminate {
+                                    runOnUiThread(Runnable { btnPositive.isEnabled = true })
                                 }
-                                .subscribe{
+                                .subscribe {
                                     if (it)
                                         notification?.notifyExtractionFinished()
                                     else
@@ -922,7 +895,7 @@ class DialogFragment() : ViewPagerBottomSheetDialogFragment() {
             ) {
                 if (groupId == googleAppHashCode) {
                     notification?.notifyCancelled()
-                    runOnUiThread (Runnable{
+                    runOnUiThread(Runnable {
                         switchViews(false)
                         progressBar.isIndeterminate = true
                         progressStatus.setText(R.string.download_canceled)

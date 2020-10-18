@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginStart="@dimen/margin_medium"
+    android:layout_marginEnd="@dimen/margin_medium"
+    android:layout_marginTop="@dimen/margin_normal"
+    android:layout_marginBottom="@dimen/margin_normal">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_trends_content_user_avatar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/avatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/user_trends_content_user_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="雷军"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/user_trends_content_user_avatar"
+            app:layout_constraintStart_toEndOf="@+id/user_trends_content_user_avatar"
+            app:layout_constraintTop_toTopOf="@+id/user_trends_content_user_avatar" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/user_trends_content_user_isussing_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5天前"
+            android:layout_marginEnd="8dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/user_trends_content_user_nickname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/user_trends_content_user_nickname" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/user_trends_content_user_trends_text_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/user_trends_content_user_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/user_trends_content_user_avatar"
+            tools:text="hello xcj, hello xcj.hello xcj, h
+            ello xcj.hello xcj, hello xcj.hello xcj, hello
+             xcj.hello xcj, hello xcj.hello xcj, hello xcj.hello
+              xcj, hello xcj.hello xcj, hello xcj.hello xcj, hello
+               xcj.hello xcj, hello xcj.hello xcj, hello xcj.hello xcj, h
+            ello xcj.hello xcj, hello xcj.hello xcj, hello
+             xcj.hello xcj, hello xcj.hello xcj, hello xcj.hello
+              xcj, hello xcj.hello xcj, hello xcj.hello xcj, hello
+               xcj.hello xcj, hello xcj.hello xcj, hello xcj.hello xcj, h
+            ello xcj.hello xcj, hello xcj.hello xcj, hello
+             xcj.hello xcj, hello xcj.hello xcj, hello xcj.hello
+              xcj, hello xcj.hello xcj, hello xcj.hello xcj, hello
+               xcj.hello xcj, hello xcj." />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_marginTop="42dp"
+            android:id="@+id/user_trends_pic_a"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintStart_toStartOf="@+id/user_trends_content_user_trends_text_content"
+            app:layout_constraintTop_toBottomOf="@+id/user_trends_content_user_trends_text_content" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/user_trends_content_liked_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@color/colorTransparent"
+            android:src="@drawable/ic_favourite_active"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/user_trends_content_user_trends_text_content"
+            app:layout_constraintTop_toBottomOf="@+id/user_trends_pic_a" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/user_trends_liked_times"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="115"
+            android:layout_marginStart="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/user_trends_content_liked_action"
+            app:layout_constraintStart_toEndOf="@+id/user_trends_content_liked_action"
+            app:layout_constraintTop_toTopOf="@+id/user_trends_content_liked_action" />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/user_trends_content_reply_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorTransparent"
+            android:src="@drawable/ic_keyboard_24px"
+            app:layout_constraintBottom_toBottomOf="@+id/user_trends_content_liked_action"
+            app:layout_constraintEnd_toEndOf="@+id/user_trends_content_user_trends_text_content"
+            app:layout_constraintTop_toTopOf="@+id/user_trends_content_liked_action" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

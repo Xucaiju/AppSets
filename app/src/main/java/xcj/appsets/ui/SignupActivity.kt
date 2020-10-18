@@ -26,28 +26,37 @@ class SignupActivity : BaseActivity() {
             val account:String? = signTextInputLayout.editText?.text.toString()
             val password:String? = signTextInputLayout2.editText?.text.toString()
             val passwordRepeat = signTextInputLayout3.editText?.text.toString()
+            val userEmail = signTextInputLayout4.editText?.text.toString()
             when {
                 account.isNullOrEmpty() -> {
-                    signTextInputLayout.error = "请输入正确的账号"
-                    signTextInputLayout.isErrorEnabled = true
+                    signTextInputLayout.error = getString(R.string.please_input_current_account)//"请输入正确的账号"
+                    //signTextInputLayout.isErrorEnabled = true
                 }
                 password.isNullOrEmpty() -> {
-                    signTextInputLayout2.error = "密码不能为空"
-                    signTextInputLayout2.isErrorEnabled = true
-                    signTextInputLayout.isErrorEnabled = false
+                    signTextInputLayout2.error = getString(R.string.the_password_cant_empty)//"密码不能为空"
+                    //signTextInputLayout2.isErrorEnabled = true
+                    signTextInputLayout.error = null
                 }
                 password!=passwordRepeat -> {
-                    signTextInputLayout3.error = "密码不一致"
-                    signTextInputLayout3.isErrorEnabled = true
-                    signTextInputLayout.isErrorEnabled = false
-                    signTextInputLayout2.isErrorEnabled = false
+                    signTextInputLayout3.error = getString(R.string.passwords_are_inconsistent)//"密码不一致"
+                   // signTextInputLayout3.isErrorEnabled = true
+                    signTextInputLayout.error = null
+                    signTextInputLayout2.error = null
+                }
+                userEmail.isNullOrEmpty()->{
+                    signTextInputLayout4.error = getString(R.string.please_input_your_email)//"请输入邮箱"
+                   // signTextInputLayout4.isErrorEnabled = true
+                    signTextInputLayout3.error = null
+                    signTextInputLayout2.error = null
+                    signTextInputLayout.error = null
                 }
                 else -> {
-                    signTextInputLayout.isErrorEnabled = false
-                    signTextInputLayout2.isErrorEnabled = false
-                    signTextInputLayout3.isErrorEnabled = false
+                    signTextInputLayout.error = null
+                    signTextInputLayout2.error = null
+                    signTextInputLayout3.error = null
                     currentUserInfo.account = account
                     currentUserInfo.password = passwordRepeat
+                    currentUserInfo.email = userEmail
                     Log.d("User", currentUserInfo.toString())
                     signUp(currentUserInfo)
                 }
@@ -67,21 +76,21 @@ class SignupActivity : BaseActivity() {
             }.subscribe({
                 when(it){
                     SignResultCode.SUCCESSFUl->{
-                        Toast.makeText(this,"注册成功!",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,getString(R.string.registration_success),Toast.LENGTH_SHORT).show()
                         ContextUtil.runOnUiThread(Runnable { turnBackToLoginActivity(userInfo) })
                     }
                     SignResultCode.FAILED->{
-                        Toast.makeText(this,"注册失败!",Toast.LENGTH_SHORT).show()
-                        ContextUtil.runOnUiThread(Runnable { resetSign() })
+                        Toast.makeText(this,getString(R.string.registration_failed),Toast.LENGTH_SHORT).show()
+                        ContextUtil.runOnUiThread(Runnable { resetSignup() })
                     }
                     else -> {}
                 }
             }){
-                Toast.makeText(this,"服务器异常!",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,getString(R.string.server_exception),Toast.LENGTH_SHORT).show()
             }
         this.disposable.add(disposable)
     }
-    private fun resetSign(){
+    private fun resetSignup(){
         signup_button.text=getText(R.string.signup_text)
         signup_button.isEnabled = true
     }

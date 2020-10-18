@@ -55,86 +55,143 @@
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_xxlarge"
-        app:srcCompat="@drawable/ic_settings_black_24dp"
-        app:layout_constraintEnd_toEndOf="@+id/bottom_user_profile_avatar"
-        app:layout_constraintTop_toBottomOf="@+id/bottom_user_profile_avatar" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/bottom_setting_action"
+    <LinearLayout
+        android:layout_marginTop="32dp"
+        android:id="@+id/linearLayout0"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/title_activity_settings"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/bg_bottom_setting_item"
+        android:paddingStart="24dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/appCompatImageView2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_user_profile_avatar">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:srcCompat="@drawable/ic_feedback_black_24dp"
-        app:layout_constraintStart_toStartOf="@+id/appCompatImageView2"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_home_24px" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/bottom_feedback_action"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/bottom_home_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/home_page"
+            android:textSize="16sp"
+            android:layout_gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageView2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="4dp"
+        android:id="@+id/linearLayout7"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/feedback"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/bottom_setting_action"
-        app:layout_constraintTop_toTopOf="@+id/appCompatImageView4" />
+        android:layout_marginEnd="12dp"
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView3"
-        android:layout_width="wrap_content"
+        android:paddingStart="24dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout0">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_settings_black_24dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/bottom_setting_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/title_activity_settings"
+            android:textSize="16sp"
+            android:layout_gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageView2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
+        android:paddingStart="24dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_feedback_black_24dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/bottom_feedback_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/feedback"
+            android:textSize="16sp"
+            android:layout_gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageView2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="52dp"
+        android:paddingStart="24dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/appCompatImageView2"
-        app:layout_constraintStart_toStartOf="@+id/appCompatImageView4"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView4"
-        app:srcCompat="@drawable/ic_help_outline_black_24dp" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/bottom_about_action"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/about"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/bottom_feedback_action"
-        app:layout_constraintTop_toTopOf="@+id/appCompatImageView3" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
-    <!--<androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="@+id/appCompatImageView2"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2"
-        app:srcCompat="@drawable/ic_get_app_black_24dp" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_help_outline_black_24dp" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/bottom_download_content_action"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="下载内容"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/bottom_setting_action"
-        app:layout_constraintTop_toTopOf="@+id/appCompatImageView5" />-->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/bottom_about_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/about"
+            android:layout_gravity="center_vertical"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageView2" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

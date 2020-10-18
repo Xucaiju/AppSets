@@ -13,8 +13,6 @@ interface TodayAppDao {
     @Query("SELECT * FROM TodayApp WHERE showedDate = cast(date('now') as TEXT)")
     fun queryTodayApp():LiveData<TodayApp?>
 
-
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTodayApp(todayApp: TodayApp)
 

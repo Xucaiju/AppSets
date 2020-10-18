@@ -21,12 +21,16 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import xcj.appsets.R
 import xcj.appsets.api.PlayStoreApiAuthenticator
 import xcj.appsets.model.User
 import xcj.appsets.server.AppSetsServer
 import xcj.appsets.service.AppSetsFirebaseSerivce
-import xcj.appsets.ui.SettingsActivity.Companion.getAllActivitys
+import xcj.appsets.ui.preference.SettingsActivity.Companion.getAllActivitys
 import xcj.appsets.util.*
 import xcj.appsets.util.AppSetsAccountant.APPSETS_USER_LOGGEDIN_AND_SKIP
 import xcj.appsets.worker.SyncDataWithServerWorker
@@ -41,17 +45,13 @@ class LoginActivity : BaseActivity() {
 
         checkPermissions()
         checkNetwork()
-        login_button.viewTreeObserver.addOnGlobalLayoutListener(object :
-            ViewTreeObserver.OnGlobalLayoutListener {
+        login_button.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 beforeWidth = login_button.width.toFloat()
                 login_button.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
-
         })
-
         setUpOnClickListener()
-
     }
 
     private fun checkNetwork() {
@@ -72,19 +72,21 @@ class LoginActivity : BaseActivity() {
         loginTextInputLayout.editText?.addTextChangedListener {
             login_button.isEnabled = it?.length!! > 0
             if (it.isEmpty())
-                loginTextInputLayout.isErrorEnabled = false
+                loginTextInputLayout.error = null
         }
         loginTextInputLayout2.editText?.addTextChangedListener {
             if (it?.isEmpty()!!) {
-                loginTextInputLayout.isErrorEnabled = false
+                loginTextInputLayout2.error = getString(R.string.please_input_password)
+            }else{
+                loginTextInputLayout2.error = null
             }
         }
         login_button.setOnClickListener {
             if (loginTextInputLayout2.editText?.text.toString().isEmpty()) {
-                loginTextInputLayout2.error = "输入有效的密码"
-                loginTextInputLayout2.isErrorEnabled = true
+                loginTextInputLayout2.error = getString(R.string.please_input_valid_password)
+                //loginTextInputLayout2.isErrorEnabled = true
             } else {
-                loginTextInputLayout.isErrorEnabled = false
+                //loginTextInputLayout.isErrorEnabled = false
                 val user = User(
                     account = loginTextInputLayout.editText?.text.toString(),
                     password = loginTextInputLayout2.editText?.text.toString()
@@ -103,11 +105,15 @@ class LoginActivity : BaseActivity() {
                         if(it!=null) {
                             when (it) {
                                 "FAILED" -> {
-                                    Toast.makeText(this, "失败! 请检查账号或密码是否正确", Toast.LENGTH_SHORT)
+                                    Toast.makeText(this, getString(R.string.please_check_your_account_or_password), Toast.LENGTH_SHORT)
                                         .show()
                                     ContextUtil.runOnUiThread(Runnable { resetAppSetsLogin() })
                                 }
                                 else -> {
+                                   /* val intent = Intent(this, MainActivity::class.java)
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                                    startActivity(intent, ViewUtil.getEmptyActivityBundle(this))
+                                    supportFinishAfterTransition()*/
                                     loginToGooglePlayApiAnonymous()
                                 }
                             }
@@ -127,7 +133,7 @@ class LoginActivity : BaseActivity() {
             finish()
         }
         forget_password_action.setOnClickListener {
-            startActivity(Intent(this, RecoverPasswordActivity::class.java))
+            startActivity(Intent(this, RetrievePasswordActivity::class.java))
         }
     }
 
@@ -137,14 +143,20 @@ class LoginActivity : BaseActivity() {
     }
     override fun onResume() {
         super.onResume()
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(1000)
+            logo.visibility = View.GONE
+        }
+        logo.bindOnFragmentResume(this, null)
         val isAppSetsUserLogged = AppSetsAccountant.isAppSetsUserLoggedIn(this)
+        val isUserLogedToGooglePlay = Accountant.isLoggedIn(this)
         val isUserSkipBuildApi = PreferenceUtil.getBoolean(this, APPSETS_USER_LOGGEDIN_AND_SKIP)
-        if ((isAppSetsUserLogged!! && isUserSkipBuildApi!!) ||
+       /* if ((isAppSetsUserLogged!! && isUserSkipBuildApi!!) ||
             (isAppSetsUserLogged!! && Accountant.isLoggedIn(this)!!)
-        ) {
+        )*/
+        if(isAppSetsUserLogged!!||isUserLogedToGooglePlay!!){
             Log.d("已登录到AppSets或Google", "true")
              getAllActivitys(this)?.let {
-                Log.d("登陆后 A 大小", "${it.size}")
                 if (it.size > 1) {
                     for (activity in it) {
                         if (activity is LoginActivity) {
@@ -211,11 +223,11 @@ class LoginActivity : BaseActivity() {
 
 
                     } else {
-                        Toast.makeText(this, "构建 GooglePlay API 失败!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, getString(R.string.failed_to_build_google_play_api), Toast.LENGTH_LONG).show()
                         ContextUtil.runOnUiThread(Runnable { resetAnonymousLogin() })
                     }
                 }) {
-                    Toast.makeText(this, "构建 GooglePlay API 失败!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, getString(R.string.failed_to_build_google_play_api), Toast.LENGTH_LONG).show()
                     ContextUtil.runOnUiThread(Runnable { resetAnonymousLogin() })
                 })
 
@@ -272,6 +284,8 @@ class LoginActivity : BaseActivity() {
     fun toSignup(view: View) {
         val intent = Intent(this, SignupActivity::class.java)
         startActivityForResult(intent, 1)
+        loginTextInputLayout?.editText?.text?.clear()
+        loginTextInputLayout2?.editText?.text?.clear()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

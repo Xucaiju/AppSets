@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">AppSets</string>
     <string name="title_search">搜索应用和游戏</string>
-    <string name="today">今天</string>
+    <string name="today">推荐</string>
     <string name="home">应用</string>
     <string name="favorite">喜欢</string>
     <string name="cat_top_apps">最受欢迎应用</string>
@@ -123,7 +123,7 @@
     <string name="times_string">次</string>
     <string name="uncollect">取消收藏</string>
     <string name="collect_it">收藏</string>
-    <string name="main_search_bar_text">今天 : %s</string>
+    <string name="main_search_bar_text">推荐 : %s</string>
     <string name="app_favorites_times">%s 次收藏</string>
 
     <string name ="type_music">音乐</string>
@@ -207,4 +207,40 @@
     <string name="forget_account">忘记账号?</string>
     <string name="your_account">你的账号</string>
     <string name="category">分类</string>
+    <string name="recover_password">找回密码</string>
+    <string name="input_captcha">验证码</string>
+    <string name="user_email">邮箱</string>
+    <string name="please_input_current_account">请输入正确的账号!</string>
+    <string name="the_password_cant_empty">密码不能为空!</string>
+    <string name="passwords_are_inconsistent">密码不一致!</string>
+    <string name="please_input_your_email">请输入邮箱!</string>
+    <string name="registration_success">注册成功!</string>
+    <string name="registration_failed">注册失败!</string>
+    <string name="server_exception">服务器异常!</string>
+    <string name="update_my_review">更新我的评论</string>
+    <string name="failed_to_build_google_play_api">构建GooglePlay API失败!</string>
+    <string name="please_check_your_account_or_password">请检查你的账号或密码!</string>
+    <string name="please_input_password">请检查你的密码!</string>
+    <string name="please_input_valid_password">请输入正确的密码!</string>
+    <string name="payment_completed">支付完成</string>
+    <string name="download_content">下载内容</string>
+    <string name="action_filter_gsf_dependent_apps">依赖谷歌框架</string>
+    <string name="action_filter_paid_apps">付费</string>
+    <string name="action_filter_apps_with_ads">有广告</string>
+    <string name="action_filter_all">全部</string>
+    <string name="rating">评分</string>
+    <string name="download_times">下载量</string>
+    <string name="others">其他</string>
+    <string name="post_trends">发动态</string>
+    <string name="manager">我的</string>
+    <string name="trends">动态</string>
+    <string name="purchased_apps">已购应用</string>
+    <string name="notifications">通知</string>
+    <string name="mine_dev_apps">我的应用</string>
+    <string name="developer">开发者</string>
+    <string name="general_user">用户</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="share">分享</string>
+    <string name="home_page">主页</string>
 </resources>

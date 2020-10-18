@@ -10,12 +10,13 @@ import java.io.IOException
 
 class Log {
     companion object{
+        val defMessage = "User not provide a message for this!"
         fun e(message: String?, vararg args: Any?) {
             e(String.format(message!!, *args))
         }
 
         fun e(message: String?) {
-            Log.e(Constant.TAG, message)
+            Log.e(Constant.TAG, message?:defMessage)
         }
 
         fun i(message: String?, vararg args: Any?) {
@@ -23,7 +24,7 @@ class Log {
         }
 
         fun i(message: String?) {
-            Log.i(Constant.TAG, message)
+            Log.i(Constant.TAG, message?:defMessage)
         }
 
         fun d(message: String?, vararg args: Any?) {
@@ -31,7 +32,7 @@ class Log {
         }
 
         fun d(message: String?) {
-            Log.d(Constant.TAG, message)
+            Log.d(Constant.TAG, message?:defMessage)
         }
 
         fun w(message: String?, vararg args: Any?) {
@@ -39,7 +40,7 @@ class Log {
         }
 
         fun w(message: String?) {
-            Log.w(Constant.TAG, message)
+            Log.w(Constant.TAG, message?:defMessage)
         }
 
         fun writeToFile(context: Context, any: Any) {

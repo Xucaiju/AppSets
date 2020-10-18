@@ -29,7 +29,6 @@ import xcj.appsets.R
 import xcj.appsets.enums.ErrorType
 import xcj.appsets.enums.ErrorType.NO_API
 import xcj.appsets.events.Event
-import xcj.appsets.extendedclass.SearchResultActivityFilterBottomSheetDialogFragment
 import xcj.appsets.listener.EndlessScrollListener
 import xcj.appsets.manager.FilterManager
 import xcj.appsets.model.App
@@ -38,6 +37,7 @@ import xcj.appsets.section.InstallAppSection
 import xcj.appsets.section.SearchResultSection
 import xcj.appsets.ui.fragment.DialogFragment
 import xcj.appsets.util.DensityUtil
+import xcj.appsets.util.FragmentUtil
 import xcj.appsets.util.filterSearchNonPersistent
 import xcj.appsets.util.validateApi
 import xcj.appsets.viewmodel.SearchAppsViewModel
@@ -118,13 +118,13 @@ class SearchResultActivity : BaseActivity(), InstallAppSection.ClickListener, On
                 }
                 else->{}
             }
-
         }) {
 
         })
         filter_fab.setOnClickListener {
-            val filterDialogFragment = SearchResultActivityFilterBottomSheetDialogFragment()
-            filterDialogFragment.show(supportFragmentManager, filterDialogFragment.tag)
+           /* val filterDialogFragment = SearchResultActivityFilterBottomSheetDialogFragment()
+            filterDialogFragment.show(supportFragmentManager, filterDialogFragment.tag)*/
+            FragmentUtil.showFilterDialogFragment(supportFragmentManager)
         }
         onNewIntent(intent)
     }
@@ -169,12 +169,8 @@ class SearchResultActivity : BaseActivity(), InstallAppSection.ClickListener, On
         adapter = SectionedRecyclerViewAdapter()
         section = SearchResultSection(this, this)
         adapter?.addSection(section)
-
         searchResultrecycler.adapter = adapter
-
         val layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-
-
         val endlessScrollListener: EndlessScrollListener =
             object : EndlessScrollListener(layoutManager) {
                 override fun onLoadMore(

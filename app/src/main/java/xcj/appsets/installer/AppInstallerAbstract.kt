@@ -23,7 +23,9 @@ abstract class AppInstallerAbstract internal constructor(context: Context) {
                 val packageName = intent.getStringExtra(
                     PackageInstaller.EXTRA_PACKAGE_NAME
                 )
-                dispatchSessionUpdate(status, packageName)
+                if (packageName != null) {
+                    dispatchSessionUpdate(status, packageName)
+                }
             }
         }
     }

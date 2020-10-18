@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import xcj.appsets.R
 import xcj.appsets.model.AppSetsLoginInfo
-import xcj.appsets.ui.SettingsActivity.Companion.getAllActivitys
+import xcj.appsets.ui.preference.SettingsActivity.Companion.getAllActivitys
 
 class UserProfileActivity : BaseActivity() {
     var userChoosedImgUri: Uri? = null
